@@ -10,7 +10,7 @@
 
 @implementation CBTableViewCellDisplayRowInfo
 
-- (instancetype)initWithCellClass:(Class)cls CellHeight:(CGFloat)cellHeight ShouldAutoCellHeight:(BOOL)shouldAutoCellHeight Info:(id _Nullable)info Desc:(NSString * _Nullable)desc {
+- (instancetype)initWithCellClass:(Class)cls cellHeight:(CGFloat)cellHeight autoCellHeight:(BOOL)shouldAutoCellHeight info:(id _Nullable)info desc:(NSString * _Nullable)desc {
     self = [super init];
     if (self) {
         _cellClass = cls;
@@ -29,22 +29,22 @@
 
 - (instancetype)initWithHeaderClass:(Class)headerClass
                        headerHeight:(CGFloat)headerHeight
-                   autoHeaderHeight:(BOOL)shouldAutoHeaderHeight
+                   autoHeaderHeight:(BOOL)autoHeaderHeight
                         footerClass:(Class)footerClass
                        footerHeight:(CGFloat)footerHeight
-                   autoFooterHeight:(BOOL)shouldAutoFooterHeight
-                               Info:(id _Nullable)info
+                   autoFooterHeight:(BOOL)autoFooterHeight
+                               info:(id _Nullable)info
                           rowsBlock:(void(^)(NSMutableArray<CBTableViewCellDisplayRowInfo *>* rowsInfos))rowsBlock
                                desc:(NSString * _Nullable)desc {
     if (self) {
         _headerClass = headerClass;
         _footerClass = footerClass;
-        _shouldAutoHeaderHeight = shouldAutoHeaderHeight;
-        _shouldAutoFooterHeight = shouldAutoFooterHeight;
+        _autoHeaderHeight = autoHeaderHeight;
+        _autoFooterHeight = autoFooterHeight;
         _headerEstimatedHeight = headerHeight;
         _footerEstimatedHeight = footerHeight;
-        _headerHeight = _shouldAutoHeaderHeight == YES ? UITableViewAutomaticDimension : headerHeight;
-        _footerHeight = shouldAutoFooterHeight == YES ? UITableViewAutomaticDimension : footerHeight;
+        _headerHeight = _autoHeaderHeight == YES ? UITableViewAutomaticDimension : headerHeight;
+        _footerHeight = autoFooterHeight == YES ? UITableViewAutomaticDimension : footerHeight;
         _info = info;
         _listRow = [NSMutableArray array];
         rowsBlock(_listRow);
@@ -56,12 +56,6 @@
 @end
 
 @implementation CBTableViewCellDisplayInfo
-
-+ (NSDictionary<NSString *,id> *)modelContainerPropertyGenericClass {
-    return @{
-             @"list" : [CBTableViewCellDisplaySectionInfo class]
-             };
-}
 
 - (instancetype)initWithSectionsBlock:(void(^)(NSMutableArray<CBTableViewCellDisplaySectionInfo *>* sectionInfos))sectionsBlock {
     if (self) {

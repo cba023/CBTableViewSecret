@@ -70,17 +70,17 @@
 - (void)formatDataSource {
     self.displayInfo = [[CBTableViewCellDisplayInfo alloc] initWithSectionsBlock:^(NSMutableArray<CBTableViewCellDisplaySectionInfo *> *sectionInfos) {
         // 新闻列表
-        CBTableViewCellDisplaySectionInfo * sectionInfo0 = [[CBTableViewCellDisplaySectionInfo alloc] initWithHeaderClass:[NewsListTableHeaderView class] HeaderHeight:45.0 AutoHeaderHeight:NO FooterClass:[NewsListTableFooterView class] FooterHeight:CGFLOAT_MIN AutoFooterHeight:NO Info:nil RowsBlock:^(NSMutableArray<CBTableViewCellDisplayRowInfo *> *rowsInfos) {
+        CBTableViewCellDisplaySectionInfo * sectionInfo0 = [[CBTableViewCellDisplaySectionInfo alloc] initWithHeaderClass:[NewsListTableHeaderView class] headerHeight:45.0 autoHeaderHeight:NO footerClass:[NewsListTableFooterView class] footerHeight:CGFLOAT_MIN autoFooterHeight:NO info:nil rowsBlock:^(NSMutableArray<CBTableViewCellDisplayRowInfo *> *rowsInfos) {
             for (NSInteger i = 0; i < self.newsModel.newslist.count; i++) {
-                CBTableViewCellDisplayRowInfo * rowInfo = [[CBTableViewCellDisplayRowInfo alloc] initWithCellClass:[NewsListTableViewCell class] CellHeight:90 ShouldAutoCellHeight:YES Info:self.newsModel.newslist[i] Desc:nil];
+                CBTableViewCellDisplayRowInfo * rowInfo = [[CBTableViewCellDisplayRowInfo alloc] initWithCellClass:[NewsListTableViewCell class] cellHeight:90 autoCellHeight:YES info:self.newsModel.newslist[i] desc:nil];
                 [rowsInfos addObject:rowInfo];
             }
-        } Desc:@"News"];
+        } desc:@"News"];
         // 电器信息
-        CBTableViewCellDisplaySectionInfo * sectionInfo1 = [[CBTableViewCellDisplaySectionInfo alloc] initWithHeaderClass:[AppliancesTableHeaderView class] HeaderHeight:45.0 AutoHeaderHeight:NO FooterClass:nil FooterHeight:CGFLOAT_MIN AutoFooterHeight:NO Info:nil RowsBlock:^(NSMutableArray<CBTableViewCellDisplayRowInfo *> *rowsInfos) {
-            CBTableViewCellDisplayRowInfo * rowInfo = [[CBTableViewCellDisplayRowInfo alloc] initWithCellClass:[AppliancesTableViewCell class] CellHeight:90 ShouldAutoCellHeight:YES Info:self.appliancesModel Desc:nil];
+        CBTableViewCellDisplaySectionInfo * sectionInfo1 = [[CBTableViewCellDisplaySectionInfo alloc] initWithHeaderClass:[AppliancesTableHeaderView class] headerHeight:45.0 autoHeaderHeight:NO footerClass:nil footerHeight:CGFLOAT_MIN autoFooterHeight:NO info:nil rowsBlock:^(NSMutableArray<CBTableViewCellDisplayRowInfo *> *rowsInfos) {
+            CBTableViewCellDisplayRowInfo * rowInfo = [[CBTableViewCellDisplayRowInfo alloc] initWithCellClass:[AppliancesTableViewCell class] cellHeight:90 autoCellHeight:YES info:self.appliancesModel desc:nil];
             [rowsInfos addObject:rowInfo];
-        } Desc:@"Appliance"];
+        } desc:@"Appliance"];
         [sectionInfos addObject:sectionInfo0];
         [sectionInfos addObject:sectionInfo1];
     }];

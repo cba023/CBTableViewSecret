@@ -14,8 +14,10 @@
     self = [super init];
     if (self) {
         _displayModel = displayModel;
-        tableView.delegate = self;
-        tableView.dataSource = self;
+        if (_displayModel.listSection.count > 0) {
+            tableView.delegate = self;
+            tableView.dataSource = self;
+        }
     }
     return self;
 }
