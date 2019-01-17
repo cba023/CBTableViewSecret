@@ -36,12 +36,21 @@
 @property (nonatomic, copy, nullable) NSString * desc;
 @property (nonatomic, strong, nullable) id info;
 
-- (instancetype)initWithHeaderClass:(Class)headerClass HeaderHeight:(CGFloat)headerHeight ShouldAutoHeaderHeight:(BOOL)shouldAutoHeaderHeight FooterClass:(Class)footerClass FooterHeight:(CGFloat)footerHeight ShouldAutoFooterHeight:(BOOL)shouldAutoFooterHeight Info:(id _Nullable)info ListRow:(NSMutableArray<CBTableViewCellDisplayRowInfo *>*)listRow Desc:(NSString * _Nullable)desc;
+- (instancetype)initWithHeaderClass:(Class)headerClass
+                       headerHeight:(CGFloat)headerHeight
+                   autoHeaderHeight:(BOOL)shouldAutoHeaderHeight
+                        footerClass:(Class)footerClass
+                       footerHeight:(CGFloat)footerHeight
+                   autoFooterHeight:(BOOL)shouldAutoFooterHeight
+                               Info:(id _Nullable)info
+                          rowsBlock:(void(^)(NSMutableArray<CBTableViewCellDisplayRowInfo *>* rowsInfos))rowsBlock
+                               desc:(NSString * _Nullable)desc;
 
 @end
 
 @interface CBTableViewCellDisplayInfo : NSObject<YYModel>
 
-@property (nonatomic, copy) NSMutableArray<CBTableViewCellDisplaySectionInfo *>              * listSection;
+@property (nonatomic, copy) NSMutableArray<CBTableViewCellDisplaySectionInfo *>              * listSection; 
+- (instancetype)initWithSectionsBlock:(void(^)(NSMutableArray<CBTableViewCellDisplaySectionInfo *>* sectionInfos))sectionsBlock ;
 
 @end

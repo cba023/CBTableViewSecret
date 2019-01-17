@@ -22,6 +22,6 @@ typedef UIView *(^TableViewFooterDataBandBlock)(UITableView *tableView, NSIntege
 @property (nonatomic, copy)TableViewFooterDataBandBlock tableViewFooterDataBandBlock;
 @property (nonatomic, strong)CBTableViewCellDisplayInfo *displayModel;
 
-- (instancetype)initWithDisplayModel:(CBTableViewCellDisplayInfo *)displayModel;
+- (instancetype)initWithDisplayModel:(CBTableViewCellDisplayInfo *)displayModel tableView:(UITableView *)tableView;
 
 @end

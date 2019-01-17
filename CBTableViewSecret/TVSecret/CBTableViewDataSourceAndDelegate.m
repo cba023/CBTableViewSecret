@@ -10,10 +10,12 @@
 
 @implementation CBTableViewDataSourceAndDelegate
 
-- (instancetype)initWithDisplayModel:(CBTableViewCellDisplayInfo *)displayModel {
+- (instancetype)initWithDisplayModel:(CBTableViewCellDisplayInfo *)displayModel tableView:(UITableView *)tableView {
     self = [super init];
     if (self) {
         _displayModel = displayModel;
+        tableView.delegate = self;
+        tableView.dataSource = self;
     }
     return self;
 }
