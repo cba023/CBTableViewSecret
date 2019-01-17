@@ -68,8 +68,8 @@
     CBTableViewCellDisplaySectionInfo * mdSection = self.displayModel.listSection[indexPath.section];
     CBTableViewCellDisplayRowInfo * mdRow = mdSection.listRow[indexPath.row];
     Class cls = mdRow.cellClass;
-    if (self.tableViewCellDataBandBlock && _tableViewCellDataBandBlock(tableView, indexPath, cls) != nil) {
-        return _tableViewCellDataBandBlock(tableView, indexPath, cls);
+    if (mdRow.cellForRowAtIndexPath) {
+        return mdRow.cellForRowAtIndexPath(tableView, indexPath, cls);
     }
     return [[UITableViewCell alloc] init];
 }
@@ -77,8 +77,8 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     CBTableViewCellDisplaySectionInfo * mdSection = self.displayModel.listSection[section];
     Class cls = mdSection.headerClass;
-    if (self.tableViewHeaderDataBandBlock) {
-        return _tableViewHeaderDataBandBlock(tableView, section, cls);
+    if (mdSection.viewForHeader) {
+        return mdSection.viewForHeader(tableView, section, cls);
     }
     return nil;
 }
@@ -86,15 +86,17 @@
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
     CBTableViewCellDisplaySectionInfo * mdSection = self.displayModel.listSection[section];
     Class cls = mdSection.headerClass;
-    if (self.tableViewFooterDataBandBlock) {
-        return _tableViewFooterDataBandBlock(tableView, section, cls);
+    if (mdSection.viewForFooter) {
+        return mdSection.viewForFooter(tableView, section, cls);
     }
     return nil;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (self.tableViewDidSelectedBlock) {
-        _tableViewDidSelectedBlock(tableView, indexPath);
+    CBTableViewCellDisplaySectionInfo * mdSection = self.displayModel.listSection[indexPath.section];
+    CBTableViewCellDisplayRowInfo * mdRow = mdSection.listRow[indexPath.row];
+    if (mdRow.didSelectRowAtIndexPath) {
+        mdRow.didSelectRowAtIndexPath(tableView, indexPath);
     }
 }
 

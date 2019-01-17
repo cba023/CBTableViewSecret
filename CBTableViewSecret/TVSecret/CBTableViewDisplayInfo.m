@@ -53,6 +53,24 @@
     return self;
 }
 
+- (instancetype)initWithHeaderHeight:(CGFloat)headerHeight
+                   autoHeaderHeight:(BOOL)autoHeaderHeight
+                       footerHeight:(CGFloat)footerHeight
+                   autoFooterHeight:(BOOL)autoFooterHeight
+                          rowsBlock:(void(^)(NSMutableArray<CBTableViewCellDisplayRowInfo *>* rowsInfos))rowsBlock {
+    if (self) {
+        _autoHeaderHeight = autoHeaderHeight;
+        _autoFooterHeight = autoFooterHeight;
+        _headerEstimatedHeight = headerHeight;
+        _footerEstimatedHeight = footerHeight;
+        _headerHeight = _autoHeaderHeight == YES ? UITableViewAutomaticDimension : headerHeight;
+        _footerHeight = autoFooterHeight == YES ? UITableViewAutomaticDimension : footerHeight;
+        _listRow = [NSMutableArray array];
+        rowsBlock(_listRow);
+    }
+    return self;
+}
+
 @end
 
 @implementation CBTableViewCellDisplayInfo

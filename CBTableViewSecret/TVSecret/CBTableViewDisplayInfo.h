@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+typedef UIView *(^ViewForHeaderInSectionBlock)(UITableView *tableView, NSInteger section, Class cls);
+typedef UIView *(^ViewForFooterInSectionBlock)(UITableView *tableView, NSInteger section, Class cls);
+typedef UITableViewCell* _Nullable (^CellForRowAtIndexPathBlock)(UITableView *tableView, NSIndexPath *indexPath, Class cls);
+typedef void(^DidSelectRowAtIndexPathBlock)(UITableView *tableView, NSIndexPath *indexPath);
+
+
 @interface CBTableViewCellDisplayRowInfo : NSObject
 
 @property (nonatomic, assign) CGFloat cellHeight;
@@ -16,6 +22,8 @@
 @property (nonatomic, copy, nullable) NSString * desc;
 @property (nonatomic, strong, nullable) id info;
 @property (nonatomic, assign) BOOL shouldAutoCellHeight;
+@property (nonatomic, copy) CellForRowAtIndexPathBlock cellForRowAtIndexPath;
+@property (nonatomic, copy) DidSelectRowAtIndexPathBlock didSelectRowAtIndexPath;
 
 - (instancetype)initWithCellClass:(Class)cls cellHeight:(CGFloat)cellHeight autoCellHeight:(BOOL)shouldAutoCellHeight info:(id _Nullable)info desc:(NSString * _Nullable)desc;
 
@@ -34,6 +42,8 @@
 @property (nonatomic, assign) BOOL autoFooterHeight;
 @property (nonatomic, copy, nullable) NSString * desc;
 @property (nonatomic, strong, nullable) id info;
+@property (nonatomic, copy) ViewForHeaderInSectionBlock viewForHeader;
+@property (nonatomic, copy) ViewForFooterInSectionBlock viewForFooter;
 
 - (instancetype)initWithHeaderClass:(Class)headerClass
                        headerHeight:(CGFloat)headerHeight
@@ -44,6 +54,11 @@
                                info:(id _Nullable)info
                           rowsBlock:(void(^)(NSMutableArray<CBTableViewCellDisplayRowInfo *>* rowsInfos))rowsBlock
                                desc:(NSString * _Nullable)desc;
+- (instancetype)initWithHeaderHeight:(CGFloat)headerHeight
+                    autoHeaderHeight:(BOOL)autoHeaderHeight
+                        footerHeight:(CGFloat)footerHeight
+                    autoFooterHeight:(BOOL)autoFooterHeight
+                           rowsBlock:(void(^)(NSMutableArray<CBTableViewCellDisplayRowInfo *>* rowsInfos))rowsBlock;
 
 @end
 

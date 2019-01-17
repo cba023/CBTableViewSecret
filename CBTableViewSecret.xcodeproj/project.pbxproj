@@ -148,8 +148,6 @@
 		78CD616721E047FA008B160F /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				78CD617121E04D32008B160F /* CBTableViewDisplayInfo.h */,
-				78CD617221E04D32008B160F /* CBTableViewDisplayInfo.m */,
 				78CD617521E075BD008B160F /* NewsModel.h */,
 				78CD617621E075BD008B160F /* NewsModel.m */,
 				78CD618221E09EC1008B160F /* PersonModel.h */,
@@ -194,6 +192,8 @@
 		78CD616A21E04835008B160F /* TVSecret */ = {
 			isa = PBXGroup;
 			children = (
+				78CD617121E04D32008B160F /* CBTableViewDisplayInfo.h */,
+				78CD617221E04D32008B160F /* CBTableViewDisplayInfo.m */,
 				78CD616E21E04C7D008B160F /* CBTableViewDataSourceAndDelegate.h */,
 				78CD616F21E04C7D008B160F /* CBTableViewDataSourceAndDelegate.m */,
 			);
