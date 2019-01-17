@@ -7,7 +7,7 @@
 //
 
 #import "CBSecretVC.h"
-#import "CBTableViewDataSourceAndDelegate.h"
+#import "CBTableViewSecret.h"
 #import "NewsModel.h"
 #import "PersonModel.h"
 #import "AppliancesModel.h"
@@ -21,8 +21,8 @@
 @interface CBSecretVC ()
 
 @property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, strong) CBTableViewDataSourceAndDelegate *tvSecret;
-@property (nonatomic, strong) CBTableViewCellDisplayInfo * displayInfo;
+@property (nonatomic, strong) CBTableViewSecret *tvSecret;
+@property (nonatomic, strong) CBTableViewDisplay * displayInfo;
 @property (nonatomic, strong) NewsModel * newsModel;
 @property (nonatomic, strong) PersonModel * personModel;
 @property (nonatomic, strong) AppliancesModel *appliancesModel;
@@ -37,7 +37,6 @@
     [self configUI];
     [self configData];
     [self formatDataSource];
-    [self bandData];
 }
 
 - (void)configUI {
@@ -68,59 +67,50 @@
 }
 
 - (void)formatDataSource {
-    self.displayInfo = [[CBTableViewCellDisplayInfo alloc] initWithSectionsBlock:^(NSMutableArray<CBTableViewCellDisplaySectionInfo *> *sectionInfos) {
-        // 新闻列表
-        CBTableViewCellDisplaySectionInfo * sectionInfo0 = [[CBTableViewCellDisplaySectionInfo alloc] initWithHeaderClass:[NewsListTableHeaderView class] headerHeight:45.0 autoHeaderHeight:NO footerClass:[NewsListTableFooterView class] footerHeight:CGFLOAT_MIN autoFooterHeight:NO info:nil rowsBlock:^(NSMutableArray<CBTableViewCellDisplayRowInfo *> *rowsInfos) {
+    self.displayInfo = [[CBTableViewDisplay alloc] initWithSectionsBlock:^(NSMutableArray<CBTableViewSectionDisplay *> *sections) {
+        // 1.News
+        CBTableViewSectionDisplay *sec0 = [[CBTableViewSectionDisplay alloc] initWithHeaderHeight:45.0 autoHeaderHeight:NO footerHeight:CGFLOAT_MIN autoFooterHeight:NO rowsBlock:^(NSMutableArray<CBTableViewRowDisplay *> *rows) {
             for (NSInteger i = 0; i < self.newsModel.newslist.count; i++) {
-                CBTableViewCellDisplayRowInfo * rowInfo = [[CBTableViewCellDisplayRowInfo alloc] initWithCellClass:[NewsListTableViewCell class] cellHeight:90 autoCellHeight:YES info:self.newsModel.newslist[i] desc:nil];
-                [rowsInfos addObject:rowInfo];
+                CBTableViewRowDisplay * row = [[CBTableViewRowDisplay alloc] initWithCellHeight:60 autoCellHeight:YES];
+                row.cellForRowAtIndexPath = ^UITableViewCell * _Nullable(UITableView *tableView, NSIndexPath *indexPathed) {
+                    NewsListTableViewCell *cell = [tableView cellWithClass:[NewsListTableViewCell class] fileType:FileTypeNib];
+                    cell.lblTitle.text = self.newsModel.newslist[i].title;
+                    cell.lblSubTitle.text = self.newsModel.newslist[i].source;
+                    return cell;
+                };
+                row.didSelectRowAtIndexPath = ^(UITableView *tableView, NSIndexPath *indexPath) {
+                    NSLog(@"新闻列表点击 - %ld - %ld -", indexPath.section, indexPath.row);
+                };
+                [rows addObject:row];
             }
-        } desc:@"News"];
-        // 电器信息
-        CBTableViewCellDisplaySectionInfo * sectionInfo1 = [[CBTableViewCellDisplaySectionInfo alloc] initWithHeaderClass:[AppliancesTableHeaderView class] headerHeight:45.0 autoHeaderHeight:NO footerClass:nil footerHeight:CGFLOAT_MIN autoFooterHeight:NO info:nil rowsBlock:^(NSMutableArray<CBTableViewCellDisplayRowInfo *> *rowsInfos) {
-            CBTableViewCellDisplayRowInfo * rowInfo = [[CBTableViewCellDisplayRowInfo alloc] initWithCellClass:[AppliancesTableViewCell class] cellHeight:90 autoCellHeight:YES info:self.appliancesModel desc:nil];
-            [rowsInfos addObject:rowInfo];
-        } desc:@"Appliance"];
-        [sectionInfos addObject:sectionInfo0];
-        [sectionInfos addObject:sectionInfo1];
-    }];
-}
-
-- (void)bandData {
-    _tvSecret = [[CBTableViewDataSourceAndDelegate alloc] initWithDisplayModel:self.displayInfo tableView:self.tableView];
-    __weak typeof (self)weakSelf = self;
-    _tvSecret.tableViewHeaderDataBandBlock = ^UIView *(UITableView *tableView, NSInteger section, __unsafe_unretained Class cls) {
-        if ([cls isEqual:[NewsListTableHeaderView class]]) {
-            NewsListTableHeaderView *header = [tableView headerFooterFromNib:cls];
+        }];
+        sec0.viewForHeader = ^UIView *(UITableView *tableView, NSInteger section) {
+            NewsListTableHeaderView *header = [tableView headerFooterFromNib:[NewsListTableHeaderView class]];
             header.lblTitle.text = @"新闻列表";
             return header;
-        } else if ([cls isEqual:[AppliancesTableHeaderView class]]) {
-            AppliancesTableHeaderView *header = [tableView headerFooterFromNib:cls];
+        };
+        // 2.Appliances
+        CBTableViewSectionDisplay * sec1 = [[CBTableViewSectionDisplay alloc] initWithHeaderHeight:90 autoHeaderHeight:NO footerHeight:CGFLOAT_MIN autoFooterHeight:NO rowsBlock:^(NSMutableArray<CBTableViewRowDisplay *> *rows) {
+            CBTableViewRowDisplay * row = [[CBTableViewRowDisplay alloc] initWithCellHeight:50 autoCellHeight:NO];
+            row.cellForRowAtIndexPath = ^UITableViewCell * _Nullable(UITableView *tableView, NSIndexPath *indexPath) {
+                AppliancesTableViewCell *cell = [tableView cellWithClass:[AppliancesTableViewCell class] fileType:FileTypeNib];
+                AppliancesModel *md = self.appliancesModel;
+                cell.lblName.text = md.name;
+                cell.lblColor.text = md.color;
+                cell.lblPrice.text = [NSString stringWithFormat:@"%.2f",md.price];
+                return cell;
+            };
+        }];
+        sec1.viewForHeader = ^UIView *(UITableView *tableView, NSInteger section) {
+            AppliancesTableHeaderView *header = [tableView headerFooterFromNib:[AppliancesTableHeaderView class]];
             header.lblName.text = @"这里的电器";
             return header;
-        }
-        return nil;
-    };
-    _tvSecret.tableViewCellDataBandBlock = ^UITableViewCell * _Nullable(UITableView *tableView, NSIndexPath *indexPath, __unsafe_unretained Class cls) {
-        CBTableViewCellDisplaySectionInfo * sectionInfo = weakSelf.displayInfo.listSection[indexPath.section];
-        CBTableViewCellDisplayRowInfo * rowInfo = sectionInfo.listRow[indexPath.row];
-        id aCell = [tableView cellWithClass:cls fileType:FileTypeNib];
-        if ([cls isEqual:[NewsListTableViewCell class]]) {
-            NewsListTableViewCell *cell = aCell;
-            Newslist * news = rowInfo.info;
-            cell.lblTitle.text = news.title;
-            cell.lblSubTitle.text = news.source;
-            return cell;
-        } else if ([cls isEqual:[AppliancesTableViewCell class]]) {
-            AppliancesTableViewCell *cell = aCell;
-            AppliancesModel *md = rowInfo.info;
-            cell.lblName.text = md.name;
-            cell.lblColor.text = md.color;
-            cell.lblPrice.text = [NSString stringWithFormat:@"%.2f",md.price];
-            return cell;
-        }
-        return nil;
-    };
+        };
+        [sections addObject:sec0];
+        [sections addObject:sec1];
+    }];
+    _tvSecret = [[CBTableViewSecret alloc] initWithDisplay:self.displayInfo tableView:self.tableView];
 }
+
 
 @end

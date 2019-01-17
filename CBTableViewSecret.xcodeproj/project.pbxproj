@@ -14,6 +14,7 @@
 		78007F3821EF13A7006A78D5 /* NewsListTableFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 78007F3721EF13A7006A78D5 /* NewsListTableFooterView.m */; };
 		78007F3A21EF13AE006A78D5 /* NewsListTableFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78007F3921EF13AE006A78D5 /* NewsListTableFooterView.xib */; };
 		78007F4121EF3215006A78D5 /* UITableView+ReuseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 78007F4021EF3215006A78D5 /* UITableView+ReuseView.m */; };
+		7879D14F21F0A99C00CFA2D8 /* CBTableViewSecret.m in Sources */ = {isa = PBXBuildFile; fileRef = 7879D14D21F0A99C00CFA2D8 /* CBTableViewSecret.m */; };
 		787B5E4621E0FA7500271CED /* AppliancesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 787B5E4421E0FA7500271CED /* AppliancesTableViewCell.m */; };
 		787B5E4721E0FA7500271CED /* AppliancesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 787B5E4521E0FA7500271CED /* AppliancesTableViewCell.xib */; };
 		78CD615321E043CA008B160F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 78CD615221E043CA008B160F /* AppDelegate.m */; };
@@ -23,7 +24,6 @@
 		78CD615E21E043CC008B160F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78CD615C21E043CC008B160F /* LaunchScreen.storyboard */; };
 		78CD616121E043CC008B160F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 78CD616021E043CC008B160F /* main.m */; };
 		78CD616D21E048FF008B160F /* CBSecretVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 78CD616C21E048FF008B160F /* CBSecretVC.m */; };
-		78CD617021E04C7D008B160F /* CBTableViewDataSourceAndDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 78CD616F21E04C7D008B160F /* CBTableViewDataSourceAndDelegate.m */; };
 		78CD617321E04D32008B160F /* CBTableViewDisplayInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 78CD617221E04D32008B160F /* CBTableViewDisplayInfo.m */; };
 		78CD617721E075BD008B160F /* NewsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 78CD617621E075BD008B160F /* NewsModel.m */; };
 		78CD617C21E098D5008B160F /* NewsListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 78CD617A21E098D5008B160F /* NewsListTableViewCell.m */; };
@@ -49,6 +49,8 @@
 		78007F3921EF13AE006A78D5 /* NewsListTableFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsListTableFooterView.xib; sourceTree = "<group>"; };
 		78007F3F21EF3215006A78D5 /* UITableView+ReuseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+ReuseView.h"; sourceTree = "<group>"; };
 		78007F4021EF3215006A78D5 /* UITableView+ReuseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+ReuseView.m"; sourceTree = "<group>"; };
+		7879D14D21F0A99C00CFA2D8 /* CBTableViewSecret.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBTableViewSecret.m; sourceTree = "<group>"; };
+		7879D14E21F0A99C00CFA2D8 /* CBTableViewSecret.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBTableViewSecret.h; sourceTree = "<group>"; };
 		787B5E4321E0FA7500271CED /* AppliancesTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppliancesTableViewCell.h; sourceTree = "<group>"; };
 		787B5E4421E0FA7500271CED /* AppliancesTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppliancesTableViewCell.m; sourceTree = "<group>"; };
 		787B5E4521E0FA7500271CED /* AppliancesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AppliancesTableViewCell.xib; sourceTree = "<group>"; };
@@ -64,8 +66,6 @@
 		78CD616021E043CC008B160F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		78CD616B21E048FF008B160F /* CBSecretVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CBSecretVC.h; sourceTree = "<group>"; };
 		78CD616C21E048FF008B160F /* CBSecretVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CBSecretVC.m; sourceTree = "<group>"; };
-		78CD616E21E04C7D008B160F /* CBTableViewDataSourceAndDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CBTableViewDataSourceAndDelegate.h; sourceTree = "<group>"; };
-		78CD616F21E04C7D008B160F /* CBTableViewDataSourceAndDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CBTableViewDataSourceAndDelegate.m; sourceTree = "<group>"; };
 		78CD617121E04D32008B160F /* CBTableViewDisplayInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CBTableViewDisplayInfo.h; sourceTree = "<group>"; };
 		78CD617221E04D32008B160F /* CBTableViewDisplayInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CBTableViewDisplayInfo.m; sourceTree = "<group>"; };
 		78CD617521E075BD008B160F /* NewsModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewsModel.h; sourceTree = "<group>"; };
@@ -148,8 +148,6 @@
 		78CD616721E047FA008B160F /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				78CD617121E04D32008B160F /* CBTableViewDisplayInfo.h */,
-				78CD617221E04D32008B160F /* CBTableViewDisplayInfo.m */,
 				78CD617521E075BD008B160F /* NewsModel.h */,
 				78CD617621E075BD008B160F /* NewsModel.m */,
 				78CD618221E09EC1008B160F /* PersonModel.h */,
@@ -194,8 +192,10 @@
 		78CD616A21E04835008B160F /* TVSecret */ = {
 			isa = PBXGroup;
 			children = (
-				78CD616E21E04C7D008B160F /* CBTableViewDataSourceAndDelegate.h */,
-				78CD616F21E04C7D008B160F /* CBTableViewDataSourceAndDelegate.m */,
+				78CD617121E04D32008B160F /* CBTableViewDisplayInfo.h */,
+				78CD617221E04D32008B160F /* CBTableViewDisplayInfo.m */,
+				7879D14E21F0A99C00CFA2D8 /* CBTableViewSecret.h */,
+				7879D14D21F0A99C00CFA2D8 /* CBTableViewSecret.m */,
 			);
 			path = TVSecret;
 			sourceTree = "<group>";
@@ -341,7 +341,7 @@
 				78CD616121E043CC008B160F /* main.m in Sources */,
 				78CD615321E043CA008B160F /* AppDelegate.m in Sources */,
 				78007F3121EF12F4006A78D5 /* AppliancesTableHeaderView.m in Sources */,
-				78CD617021E04C7D008B160F /* CBTableViewDataSourceAndDelegate.m in Sources */,
+				7879D14F21F0A99C00CFA2D8 /* CBTableViewSecret.m in Sources */,
 				78CD616D21E048FF008B160F /* CBSecretVC.m in Sources */,
 				78CD618421E09EC1008B160F /* PersonModel.m in Sources */,
 				78CD617C21E098D5008B160F /* NewsListTableViewCell.m in Sources */,
