@@ -67,9 +67,9 @@
 }
 
 - (void)formatDataSource {
-    self.displayInfo = [[CBTableViewDisplay alloc] initWithSectionsBlock:^(NSMutableArray<CBTableViewSectionDisplay *> *sectionInfos) {
+    self.displayInfo = [[CBTableViewDisplay alloc] initWithSectionsBlock:^(NSMutableArray<CBTableViewSectionDisplay *> *sections) {
         // 1.News
-        CBTableViewSectionDisplay *sec0 = [[CBTableViewSectionDisplay alloc] initWithHeaderHeight:45.0 autoHeaderHeight:NO footerHeight:CGFLOAT_MIN autoFooterHeight:NO rowsBlock:^(NSMutableArray<CBTableViewRowDisplay *> *rowsInfos) {
+        CBTableViewSectionDisplay *sec0 = [[CBTableViewSectionDisplay alloc] initWithHeaderHeight:45.0 autoHeaderHeight:NO footerHeight:CGFLOAT_MIN autoFooterHeight:NO rowsBlock:^(NSMutableArray<CBTableViewRowDisplay *> *rows) {
             for (NSInteger i = 0; i < self.newsModel.newslist.count; i++) {
                 CBTableViewRowDisplay * row = [[CBTableViewRowDisplay alloc] initWithCellHeight:60 autoCellHeight:YES];
                 row.cellForRowAtIndexPath = ^UITableViewCell * _Nullable(UITableView *tableView, NSIndexPath *indexPathed) {
@@ -81,7 +81,7 @@
                 row.didSelectRowAtIndexPath = ^(UITableView *tableView, NSIndexPath *indexPath) {
                     NSLog(@"新闻列表点击 - %ld - %ld -", indexPath.section, indexPath.row);
                 };
-                [rowsInfos addObject:row];
+                [rows addObject:row];
             }
         }];
         sec0.viewForHeader = ^UIView *(UITableView *tableView, NSInteger section) {
@@ -90,7 +90,7 @@
             return header;
         };
         // 2.Appliances
-        CBTableViewSectionDisplay * sec1 = [[CBTableViewSectionDisplay alloc] initWithHeaderHeight:90 autoHeaderHeight:NO footerHeight:CGFLOAT_MIN autoFooterHeight:NO rowsBlock:^(NSMutableArray<CBTableViewRowDisplay *> *rowsInfos) {
+        CBTableViewSectionDisplay * sec1 = [[CBTableViewSectionDisplay alloc] initWithHeaderHeight:90 autoHeaderHeight:NO footerHeight:CGFLOAT_MIN autoFooterHeight:NO rowsBlock:^(NSMutableArray<CBTableViewRowDisplay *> *rows) {
             CBTableViewRowDisplay * row = [[CBTableViewRowDisplay alloc] initWithCellHeight:50 autoCellHeight:NO];
             row.cellForRowAtIndexPath = ^UITableViewCell * _Nullable(UITableView *tableView, NSIndexPath *indexPath) {
                 AppliancesTableViewCell *cell = [tableView cellWithClass:[AppliancesTableViewCell class] fileType:FileTypeNib];
@@ -106,8 +106,8 @@
             header.lblName.text = @"这里的电器";
             return header;
         };
-        [sectionInfos addObject:sec0];
-        [sectionInfos addObject:sec1];
+        [sections addObject:sec0];
+        [sections addObject:sec1];
     }];
     _tvSecret = [[CBTableViewSecret alloc] initWithDisplay:self.displayInfo tableView:self.tableView];
 }

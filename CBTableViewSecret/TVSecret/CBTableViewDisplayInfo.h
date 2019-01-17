@@ -39,13 +39,13 @@ typedef void(^DidSelectRowAtIndexPathBlock)(UITableView *tableView, NSIndexPath 
 @property (nonatomic, copy) ViewForHeaderInSectionBlock viewForHeader;
 @property (nonatomic, copy) ViewForFooterInSectionBlock viewForFooter;
 
-- (instancetype)initWithHeaderHeight:(CGFloat)headerHeight autoHeaderHeight:(BOOL)autoHeaderHeight footerHeight:(CGFloat)footerHeight autoFooterHeight:(BOOL)autoFooterHeight rowsBlock:(void (^)(NSMutableArray<CBTableViewRowDisplay *> *))rowsBlock;
+- (instancetype)initWithHeaderHeight:(CGFloat)headerHeight autoHeaderHeight:(BOOL)autoHeaderHeight footerHeight:(CGFloat)footerHeight autoFooterHeight:(BOOL)autoFooterHeight rowsBlock:(void (^)(NSMutableArray<CBTableViewRowDisplay *> * rows))rowsBlock;
 
 @end
 
 @interface CBTableViewDisplay : NSObject
 
 @property (nonatomic, copy) NSMutableArray<CBTableViewSectionDisplay *>              * sections;
-- (instancetype)initWithSectionsBlock:(void(^)(NSMutableArray<CBTableViewSectionDisplay *>* sectionInfos))sectionsBlock ;
+- (instancetype)initWithSectionsBlock:(void(^)(NSMutableArray<CBTableViewSectionDisplay *>* sections))sectionsBlock ;
 
 @end
