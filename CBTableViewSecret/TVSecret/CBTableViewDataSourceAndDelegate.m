@@ -76,18 +76,16 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     CBTableViewCellDisplaySectionInfo * mdSection = self.displayModel.listSection[section];
-    Class cls = mdSection.headerClass;
     if (mdSection.viewForHeader) {
-        return mdSection.viewForHeader(tableView, section, cls);
+        return mdSection.viewForHeader(tableView, section);
     }
     return nil;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
     CBTableViewCellDisplaySectionInfo * mdSection = self.displayModel.listSection[section];
-    Class cls = mdSection.headerClass;
     if (mdSection.viewForFooter) {
-        return mdSection.viewForFooter(tableView, section, cls);
+        return mdSection.viewForFooter(tableView, section);
     }
     return nil;
 }

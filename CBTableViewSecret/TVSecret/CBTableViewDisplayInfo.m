@@ -10,15 +10,12 @@
 
 @implementation CBTableViewCellDisplayRowInfo
 
-- (instancetype)initWithCellClass:(Class)cls cellHeight:(CGFloat)cellHeight autoCellHeight:(BOOL)shouldAutoCellHeight info:(id _Nullable)info desc:(NSString * _Nullable)desc {
+- (instancetype)initWithCellHeight:(CGFloat)cellHeight autoCellHeight:(BOOL)shouldAutoCellHeight {
     self = [super init];
     if (self) {
-        _cellClass = cls;
         _shouldAutoCellHeight = shouldAutoCellHeight;
         _cellEstimatedHeight = cellHeight;
         _cellHeight = _shouldAutoCellHeight == YES ? UITableViewAutomaticDimension : cellHeight;
-        _info = info;
-        _desc = desc;
     }
     return self;
 }

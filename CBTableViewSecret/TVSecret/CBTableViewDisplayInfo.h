@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-typedef UIView *(^ViewForHeaderInSectionBlock)(UITableView *tableView, NSInteger section, Class cls);
-typedef UIView *(^ViewForFooterInSectionBlock)(UITableView *tableView, NSInteger section, Class cls);
+typedef UIView *(^ViewForHeaderInSectionBlock)(UITableView *tableView, NSInteger section);
+typedef UIView *(^ViewForFooterInSectionBlock)(UITableView *tableView, NSInteger section);
 typedef UITableViewCell* _Nullable (^CellForRowAtIndexPathBlock)(UITableView *tableView, NSIndexPath *indexPath, Class cls);
 typedef void(^DidSelectRowAtIndexPathBlock)(UITableView *tableView, NSIndexPath *indexPath);
 
@@ -25,7 +25,7 @@ typedef void(^DidSelectRowAtIndexPathBlock)(UITableView *tableView, NSIndexPath 
 @property (nonatomic, copy) CellForRowAtIndexPathBlock cellForRowAtIndexPath;
 @property (nonatomic, copy) DidSelectRowAtIndexPathBlock didSelectRowAtIndexPath;
 
-- (instancetype)initWithCellClass:(Class)cls cellHeight:(CGFloat)cellHeight autoCellHeight:(BOOL)shouldAutoCellHeight info:(id _Nullable)info desc:(NSString * _Nullable)desc;
+- (instancetype)initWithCellHeight:(CGFloat)cellHeight autoCellHeight:(BOOL)shouldAutoCellHeight;
 
 @end
 

@@ -71,21 +71,20 @@
         // 新闻列表
         CBTableViewCellDisplaySectionInfo *sec0 = [[CBTableViewCellDisplaySectionInfo alloc] initWithHeaderHeight:45.0 autoHeaderHeight:NO footerHeight:CGFLOAT_MIN autoFooterHeight:NO rowsBlock:^(NSMutableArray<CBTableViewCellDisplayRowInfo *> *rowsInfos) {
             for (NSInteger i = 0; i < self.newsModel.newslist.count; i++) {
-                CBTableViewCellDisplayRowInfo * rowInfo = [[CBTableViewCellDisplayRowInfo alloc] initWithCellClass:[NewsListTableViewCell class] cellHeight:90 autoCellHeight:YES info:self.newsModel.newslist[i] desc:nil];
-                rowInfo.cellForRowAtIndexPath = ^UITableViewCell * _Nullable(UITableView *tableView, NSIndexPath *indexPath, __unsafe_unretained Class cls) {
-                    id aCell = [tableView cellWithClass:cls fileType:FileTypeNib];
-                    NewsListTableViewCell *cell = aCell;
+                CBTableViewCellDisplayRowInfo * row = [[CBTableViewCellDisplayRowInfo alloc] initWithCellHeight:60 autoCellHeight:YES];
+                row.cellForRowAtIndexPath = ^UITableViewCell * _Nullable(UITableView *tableView, NSIndexPath *indexPath, __unsafe_unretained Class cls) {
+                    NewsListTableViewCell *cell = [tableView cellWithClass:[NewsListTableViewCell class] fileType:FileTypeNib];
                     cell.lblTitle.text = self.newsModel.newslist[i].title;
                     cell.lblSubTitle.text = self.newsModel.newslist[i].source;
                     return cell;
                 };
-                rowInfo.didSelectRowAtIndexPath = ^(UITableView *tableView, NSIndexPath *indexPath) {
+                row.didSelectRowAtIndexPath = ^(UITableView *tableView, NSIndexPath *indexPath) {
                     NSLog(@"新闻列表点击 - %ld - %ld -", indexPath.section, indexPath.row);
                 };
-                [rowsInfos addObject:rowInfo];
+                [rowsInfos addObject:row];
             }
         }];
-        sec0.viewForHeader = ^UIView *(UITableView *tableView, NSInteger section, __unsafe_unretained Class cls) {
+        sec0.viewForHeader = ^UIView *(UITableView *tableView, NSInteger section) {
             NewsListTableHeaderView *header = [tableView headerFooterFromNib:[NewsListTableHeaderView class]];
             header.lblTitle.text = @"新闻列表";
             return header;
@@ -93,20 +92,18 @@
         
         // 电器信息
         CBTableViewCellDisplaySectionInfo * sec1 = [[CBTableViewCellDisplaySectionInfo alloc] initWithHeaderHeight:90 autoHeaderHeight:NO footerHeight:CGFLOAT_MIN autoFooterHeight:NO rowsBlock:^(NSMutableArray<CBTableViewCellDisplayRowInfo *> *rowsInfos) {
-            CBTableViewCellDisplayRowInfo * rowInfo = [[CBTableViewCellDisplayRowInfo alloc] initWithCellClass:[AppliancesTableViewCell class] cellHeight:90 autoCellHeight:YES info:self.appliancesModel desc:nil];
-            rowInfo.cellForRowAtIndexPath = ^UITableViewCell * _Nullable(UITableView *tableView, NSIndexPath *indexPath, __unsafe_unretained Class cls) {
-                id aCell = [tableView cellWithClass:cls fileType:FileTypeNib];
-                AppliancesTableViewCell *cell = aCell;
+            CBTableViewCellDisplayRowInfo * row = [[CBTableViewCellDisplayRowInfo alloc] initWithCellHeight:50 autoCellHeight:NO];
+            row.cellForRowAtIndexPath = ^UITableViewCell * _Nullable(UITableView *tableView, NSIndexPath *indexPath, __unsafe_unretained Class cls) {
+                AppliancesTableViewCell *cell = [tableView cellWithClass:cls fileType:FileTypeNib];
                 AppliancesModel *md = self.appliancesModel;
                 cell.lblName.text = md.name;
                 cell.lblColor.text = md.color;
                 cell.lblPrice.text = [NSString stringWithFormat:@"%.2f",md.price];
                 return cell;
             };
-            [rowsInfos addObject:rowInfo];
         }];
         
-        sec1.viewForHeader = ^UIView *(UITableView *tableView, NSInteger section, __unsafe_unretained Class cls) {
+        sec1.viewForHeader = ^UIView *(UITableView *tableView, NSInteger section) {
             AppliancesTableHeaderView *header = [tableView headerFooterFromNib:[AppliancesTableHeaderView class]];
             header.lblName.text = @"这里的电器";
             return header;
