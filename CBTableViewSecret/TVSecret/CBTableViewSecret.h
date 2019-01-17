@@ -11,7 +11,7 @@
 
 @interface CBTableViewSecret : NSObject<UITableViewDataSource, UITableViewDelegate>
 
-@property (nonatomic, strong)CBTableViewDisplay *displayModel;
-- (instancetype)initWithDisplayModel:(CBTableViewDisplay *)displayModel tableView:(UITableView *)tableView;
+@property (nonatomic, strong)CBTableViewDisplay *display;
+- (instancetype)initWithDisplay:(CBTableViewDisplay *)display tableView:(UITableView *)tableView;
 
 @end

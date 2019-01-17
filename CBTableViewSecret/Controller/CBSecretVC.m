@@ -68,7 +68,7 @@
 
 - (void)formatDataSource {
     self.displayInfo = [[CBTableViewDisplay alloc] initWithSectionsBlock:^(NSMutableArray<CBTableViewSectionDisplay *> *sectionInfos) {
-        // 新闻列表
+        // 1.News
         CBTableViewSectionDisplay *sec0 = [[CBTableViewSectionDisplay alloc] initWithHeaderHeight:45.0 autoHeaderHeight:NO footerHeight:CGFLOAT_MIN autoFooterHeight:NO rowsBlock:^(NSMutableArray<CBTableViewRowDisplay *> *rowsInfos) {
             for (NSInteger i = 0; i < self.newsModel.newslist.count; i++) {
                 CBTableViewRowDisplay * row = [[CBTableViewRowDisplay alloc] initWithCellHeight:60 autoCellHeight:YES];
@@ -89,8 +89,7 @@
             header.lblTitle.text = @"新闻列表";
             return header;
         };
-        
-        // 电器信息
+        // 2.Appliances
         CBTableViewSectionDisplay * sec1 = [[CBTableViewSectionDisplay alloc] initWithHeaderHeight:90 autoHeaderHeight:NO footerHeight:CGFLOAT_MIN autoFooterHeight:NO rowsBlock:^(NSMutableArray<CBTableViewRowDisplay *> *rowsInfos) {
             CBTableViewRowDisplay * row = [[CBTableViewRowDisplay alloc] initWithCellHeight:50 autoCellHeight:NO];
             row.cellForRowAtIndexPath = ^UITableViewCell * _Nullable(UITableView *tableView, NSIndexPath *indexPath) {
@@ -102,7 +101,6 @@
                 return cell;
             };
         }];
-        
         sec1.viewForHeader = ^UIView *(UITableView *tableView, NSInteger section) {
             AppliancesTableHeaderView *header = [tableView headerFooterFromNib:[AppliancesTableHeaderView class]];
             header.lblName.text = @"这里的电器";
@@ -111,7 +109,7 @@
         [sectionInfos addObject:sec0];
         [sectionInfos addObject:sec1];
     }];
-    _tvSecret = [[CBTableViewSecret alloc] initWithDisplayModel:self.displayInfo tableView:self.tableView];
+    _tvSecret = [[CBTableViewSecret alloc] initWithDisplay:self.displayInfo tableView:self.tableView];
 }
 
 

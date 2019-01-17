@@ -24,11 +24,7 @@
 
 @implementation CBTableViewSectionDisplay
 
-- (instancetype)initWithHeaderHeight:(CGFloat)headerHeight
-                   autoHeaderHeight:(BOOL)autoHeaderHeight
-                       footerHeight:(CGFloat)footerHeight
-                   autoFooterHeight:(BOOL)autoFooterHeight
-                          rowsBlock:(void(^)(NSMutableArray<CBTableViewRowDisplay *>* rowsInfos))rowsBlock {
+- (instancetype)initWithHeaderHeight:(CGFloat)headerHeight autoHeaderHeight:(BOOL)autoHeaderHeight footerHeight:(CGFloat)footerHeight autoFooterHeight:(BOOL)autoFooterHeight rowsBlock:(void (^)(NSMutableArray<CBTableViewRowDisplay *> *))rowsBlock {
     if (self) {
         _autoHeaderHeight = autoHeaderHeight;
         _autoFooterHeight = autoFooterHeight;
@@ -48,8 +44,8 @@
 
 - (instancetype)initWithSectionsBlock:(void(^)(NSMutableArray<CBTableViewSectionDisplay *>* sectionInfos))sectionsBlock {
     if (self) {
-        _listSection = [NSMutableArray array];
-        sectionsBlock(_listSection);
+        _sections = [NSMutableArray array];
+        sectionsBlock(_sections);
     }
     return self;
 }
