@@ -10,7 +10,7 @@
 
 @implementation CBTableViewSecret
 
-- (instancetype)initWithDisplayModel:(CBTableViewCellDisplayInfo *)displayModel tableView:(UITableView *)tableView {
+- (instancetype)initWithDisplayModel:(CBTableViewDisplay *)displayModel tableView:(UITableView *)tableView {
     self = [super init];
     if (self) {
         _displayModel = displayModel;
@@ -65,17 +65,16 @@
 }
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    CBTableViewCellDisplaySectionInfo * mdSection = self.displayModel.listSection[indexPath.section];
-    CBTableViewCellDisplayRowInfo * mdRow = mdSection.listRow[indexPath.row];
-    Class cls = mdRow.cellClass;
+    CBTableViewSectionDisplay * mdSection = self.displayModel.listSection[indexPath.section];
+    CBTableViewRowDisplay * mdRow = mdSection.listRow[indexPath.row];
     if (mdRow.cellForRowAtIndexPath) {
-        return mdRow.cellForRowAtIndexPath(tableView, indexPath, cls);
+        return mdRow.cellForRowAtIndexPath(tableView, indexPath);
     }
     return [[UITableViewCell alloc] init];
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    CBTableViewCellDisplaySectionInfo * mdSection = self.displayModel.listSection[section];
+    CBTableViewSectionDisplay * mdSection = self.displayModel.listSection[section];
     if (mdSection.viewForHeader) {
         return mdSection.viewForHeader(tableView, section);
     }
@@ -83,7 +82,7 @@
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
-    CBTableViewCellDisplaySectionInfo * mdSection = self.displayModel.listSection[section];
+    CBTableViewSectionDisplay * mdSection = self.displayModel.listSection[section];
     if (mdSection.viewForFooter) {
         return mdSection.viewForFooter(tableView, section);
     }
@@ -91,8 +90,8 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    CBTableViewCellDisplaySectionInfo * mdSection = self.displayModel.listSection[indexPath.section];
-    CBTableViewCellDisplayRowInfo * mdRow = mdSection.listRow[indexPath.row];
+    CBTableViewSectionDisplay * mdSection = self.displayModel.listSection[indexPath.section];
+    CBTableViewRowDisplay * mdRow = mdSection.listRow[indexPath.row];
     if (mdRow.didSelectRowAtIndexPath) {
         mdRow.didSelectRowAtIndexPath(tableView, indexPath);
     }

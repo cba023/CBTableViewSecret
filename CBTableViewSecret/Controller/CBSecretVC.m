@@ -7,7 +7,7 @@
 //
 
 #import "CBSecretVC.h"
-#import "CBTableViewDataSourceAndDelegate.h"
+#import "CBTableViewSecret.h"
 #import "NewsModel.h"
 #import "PersonModel.h"
 #import "AppliancesModel.h"
@@ -21,8 +21,8 @@
 @interface CBSecretVC ()
 
 @property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, strong) CBTableViewDataSourceAndDelegate *tvSecret;
-@property (nonatomic, strong) CBTableViewCellDisplayInfo * displayInfo;
+@property (nonatomic, strong) CBTableViewSecret *tvSecret;
+@property (nonatomic, strong) CBTableViewDisplay * displayInfo;
 @property (nonatomic, strong) NewsModel * newsModel;
 @property (nonatomic, strong) PersonModel * personModel;
 @property (nonatomic, strong) AppliancesModel *appliancesModel;
@@ -67,12 +67,12 @@
 }
 
 - (void)formatDataSource {
-    self.displayInfo = [[CBTableViewCellDisplayInfo alloc] initWithSectionsBlock:^(NSMutableArray<CBTableViewCellDisplaySectionInfo *> *sectionInfos) {
+    self.displayInfo = [[CBTableViewDisplay alloc] initWithSectionsBlock:^(NSMutableArray<CBTableViewSectionDisplay *> *sectionInfos) {
         // 新闻列表
-        CBTableViewCellDisplaySectionInfo *sec0 = [[CBTableViewCellDisplaySectionInfo alloc] initWithHeaderHeight:45.0 autoHeaderHeight:NO footerHeight:CGFLOAT_MIN autoFooterHeight:NO rowsBlock:^(NSMutableArray<CBTableViewCellDisplayRowInfo *> *rowsInfos) {
+        CBTableViewSectionDisplay *sec0 = [[CBTableViewSectionDisplay alloc] initWithHeaderHeight:45.0 autoHeaderHeight:NO footerHeight:CGFLOAT_MIN autoFooterHeight:NO rowsBlock:^(NSMutableArray<CBTableViewRowDisplay *> *rowsInfos) {
             for (NSInteger i = 0; i < self.newsModel.newslist.count; i++) {
-                CBTableViewCellDisplayRowInfo * row = [[CBTableViewCellDisplayRowInfo alloc] initWithCellHeight:60 autoCellHeight:YES];
-                row.cellForRowAtIndexPath = ^UITableViewCell * _Nullable(UITableView *tableView, NSIndexPath *indexPath, __unsafe_unretained Class cls) {
+                CBTableViewRowDisplay * row = [[CBTableViewRowDisplay alloc] initWithCellHeight:60 autoCellHeight:YES];
+                row.cellForRowAtIndexPath = ^UITableViewCell * _Nullable(UITableView *tableView, NSIndexPath *indexPathed) {
                     NewsListTableViewCell *cell = [tableView cellWithClass:[NewsListTableViewCell class] fileType:FileTypeNib];
                     cell.lblTitle.text = self.newsModel.newslist[i].title;
                     cell.lblSubTitle.text = self.newsModel.newslist[i].source;
@@ -91,10 +91,10 @@
         };
         
         // 电器信息
-        CBTableViewCellDisplaySectionInfo * sec1 = [[CBTableViewCellDisplaySectionInfo alloc] initWithHeaderHeight:90 autoHeaderHeight:NO footerHeight:CGFLOAT_MIN autoFooterHeight:NO rowsBlock:^(NSMutableArray<CBTableViewCellDisplayRowInfo *> *rowsInfos) {
-            CBTableViewCellDisplayRowInfo * row = [[CBTableViewCellDisplayRowInfo alloc] initWithCellHeight:50 autoCellHeight:NO];
-            row.cellForRowAtIndexPath = ^UITableViewCell * _Nullable(UITableView *tableView, NSIndexPath *indexPath, __unsafe_unretained Class cls) {
-                AppliancesTableViewCell *cell = [tableView cellWithClass:cls fileType:FileTypeNib];
+        CBTableViewSectionDisplay * sec1 = [[CBTableViewSectionDisplay alloc] initWithHeaderHeight:90 autoHeaderHeight:NO footerHeight:CGFLOAT_MIN autoFooterHeight:NO rowsBlock:^(NSMutableArray<CBTableViewRowDisplay *> *rowsInfos) {
+            CBTableViewRowDisplay * row = [[CBTableViewRowDisplay alloc] initWithCellHeight:50 autoCellHeight:NO];
+            row.cellForRowAtIndexPath = ^UITableViewCell * _Nullable(UITableView *tableView, NSIndexPath *indexPath) {
+                AppliancesTableViewCell *cell = [tableView cellWithClass:[AppliancesTableViewCell class] fileType:FileTypeNib];
                 AppliancesModel *md = self.appliancesModel;
                 cell.lblName.text = md.name;
                 cell.lblColor.text = md.color;
@@ -111,7 +111,7 @@
         [sectionInfos addObject:sec0];
         [sectionInfos addObject:sec1];
     }];
-    _tvSecret = [[CBTableViewDataSourceAndDelegate alloc] initWithDisplayModel:self.displayInfo tableView:self.tableView];
+    _tvSecret = [[CBTableViewSecret alloc] initWithDisplayModel:self.displayInfo tableView:self.tableView];
 }
 
 
