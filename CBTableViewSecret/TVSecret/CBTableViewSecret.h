@@ -1,5 +1,5 @@
 //
-//  CBTableViewDataSourceAndDelegate.h
+//  CBTableViewSecret.h
 //  CBTableViewSecret
 //
 //  Created by 陈波 on 2019/1/5.
@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "CBTableViewDisplayInfo.h"
 
-@interface CBTableViewDataSourceAndDelegate : NSObject<UITableViewDataSource, UITableViewDelegate>
+@interface CBTableViewSecret : NSObject<UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong)CBTableViewCellDisplayInfo *displayModel;
 - (instancetype)initWithDisplayModel:(CBTableViewCellDisplayInfo *)displayModel tableView:(UITableView *)tableView;

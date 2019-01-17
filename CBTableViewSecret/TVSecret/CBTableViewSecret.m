@@ -1,14 +1,14 @@
 //
-//  CBTableViewDataSourceAndDelegate.m
+//  CBTableViewSecret.m
 //  CBTableViewSecret
 //
 //  Created by 陈波 on 2019/1/5.
 //  Copyright © 2019 陈波. All rights reserved.
 //
 
-#import "CBTableViewDataSourceAndDelegate.h"
+#import "CBTableViewSecret.h"
 
-@implementation CBTableViewDataSourceAndDelegate
+@implementation CBTableViewSecret
 
 - (instancetype)initWithDisplayModel:(CBTableViewCellDisplayInfo *)displayModel tableView:(UITableView *)tableView {
     self = [super init];
