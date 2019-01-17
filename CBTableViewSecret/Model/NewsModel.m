@@ -20,7 +20,7 @@
 @implementation NewsModel
 
 + (NSDictionary<NSString *,id> *)modelContainerPropertyGenericClass {
-    return @{@"newsList":[Newslist class]};
+    return @{@"newslist":[Newslist class]};
 }
 
 @end

@@ -8,3 +8,4 @@ target 'CBTableViewSecret' do
   # Pods for CBTableViewSecret
 
 end
+inhibit_all_warnings!

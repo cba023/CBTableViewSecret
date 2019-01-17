@@ -56,6 +56,6 @@
 
 @interface NewsModel :NSObject<YYModel>
 @property (nonatomic , assign) NSInteger              ret;
-@property (nonatomic , copy) NSArray<Newslist *>              * newslist;
+@property (nonatomic , strong) NSArray<Newslist *>              * newslist;
 
 @end

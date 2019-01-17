@@ -18,8 +18,32 @@
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="320" height="89.5"/>
                 <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fcr-1W-CGP">
+                        <rect key="frame" x="16" y="16" width="42" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gmJ-2u-zG3">
+                        <rect key="frame" x="16" y="43" width="37.5" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Fcr-1W-CGP" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="83i-gw-hAg"/>
+                    <constraint firstItem="gmJ-2u-zG3" firstAttribute="top" secondItem="Fcr-1W-CGP" secondAttribute="bottom" constant="6" id="E9d-K1-ZxI"/>
+                    <constraint firstItem="gmJ-2u-zG3" firstAttribute="leading" secondItem="Fcr-1W-CGP" secondAttribute="leading" id="iPp-AN-ds3"/>
+                    <constraint firstItem="Fcr-1W-CGP" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="vRa-PK-Nmh"/>
+                </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <connections>
+                <outlet property="lblSubTitle" destination="gmJ-2u-zG3" id="UvP-u6-mff"/>
+                <outlet property="lblTitle" destination="Fcr-1W-CGP" id="SWj-fv-OKX"/>
+            </connections>
             <point key="canvasLocation" x="137.59999999999999" y="168.21589205397302"/>
         </tableViewCell>
     </objects>

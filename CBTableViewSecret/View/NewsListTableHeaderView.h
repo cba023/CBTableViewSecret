@@ -10,7 +10,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface NewsListTableHeaderView : UITableViewHeaderFooterView
+@interface NewsListTableHeaderView : UIView
+
+@property (weak, nonatomic) IBOutlet UILabel *lblTitle;
 
 @end
 

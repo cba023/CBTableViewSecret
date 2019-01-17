@@ -10,7 +10,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface AppliancesTableHeaderView : UITableViewHeaderFooterView
+@interface AppliancesTableHeaderView : UIView
+
+@property (weak, nonatomic) IBOutlet UILabel *lblName;
 
 @end
 

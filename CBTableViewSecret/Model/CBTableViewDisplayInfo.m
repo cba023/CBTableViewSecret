@@ -8,6 +8,8 @@
 
 #import "CBTableViewDisplayInfo.h"
 
+typedef NSMutableArray<CBTableViewCellDisplayRowInfo *> *(^RowsInfoBlock)(NSMutableArray<CBTableViewCellDisplayRowInfo *> * rows);
+
 @implementation CBTableViewCellDisplayRowInfo
 
 - (instancetype)initWithCellClass:(Class)cls CellHeight:(CGFloat)cellHeight ShouldAutoCellHeight:(BOOL)shouldAutoCellHeight Info:(id _Nullable)info Desc:(NSString * _Nullable)desc {

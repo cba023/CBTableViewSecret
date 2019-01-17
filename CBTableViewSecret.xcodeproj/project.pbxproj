@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		78007F2E21EF12CF006A78D5 /* NewsListTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 78007F2D21EF12CF006A78D5 /* NewsListTableHeaderView.m */; };
+		78007F3121EF12F4006A78D5 /* AppliancesTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 78007F3021EF12F4006A78D5 /* AppliancesTableHeaderView.m */; };
+		78007F3321EF1349006A78D5 /* NewsListTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78007F3221EF1349006A78D5 /* NewsListTableHeaderView.xib */; };
+		78007F3521EF136E006A78D5 /* AppliancesTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78007F3421EF136E006A78D5 /* AppliancesTableHeaderView.xib */; };
+		78007F3821EF13A7006A78D5 /* NewsListTableFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 78007F3721EF13A7006A78D5 /* NewsListTableFooterView.m */; };
+		78007F3A21EF13AE006A78D5 /* NewsListTableFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78007F3921EF13AE006A78D5 /* NewsListTableFooterView.xib */; };
+		78007F4121EF3215006A78D5 /* UITableView+ReuseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 78007F4021EF3215006A78D5 /* UITableView+ReuseView.m */; };
 		787B5E4621E0FA7500271CED /* AppliancesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 787B5E4421E0FA7500271CED /* AppliancesTableViewCell.m */; };
 		787B5E4721E0FA7500271CED /* AppliancesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 787B5E4521E0FA7500271CED /* AppliancesTableViewCell.xib */; };
 		78CD615321E043CA008B160F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 78CD615221E043CA008B160F /* AppDelegate.m */; };
@@ -31,6 +38,17 @@
 
 /* Begin PBXFileReference section */
 		2E60B6CDC066D71FAC998165 /* libPods-CBTableViewSecret.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CBTableViewSecret.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		78007F2C21EF12CF006A78D5 /* NewsListTableHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewsListTableHeaderView.h; sourceTree = "<group>"; };
+		78007F2D21EF12CF006A78D5 /* NewsListTableHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsListTableHeaderView.m; sourceTree = "<group>"; };
+		78007F2F21EF12F4006A78D5 /* AppliancesTableHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppliancesTableHeaderView.h; sourceTree = "<group>"; };
+		78007F3021EF12F4006A78D5 /* AppliancesTableHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppliancesTableHeaderView.m; sourceTree = "<group>"; };
+		78007F3221EF1349006A78D5 /* NewsListTableHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsListTableHeaderView.xib; sourceTree = "<group>"; };
+		78007F3421EF136E006A78D5 /* AppliancesTableHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AppliancesTableHeaderView.xib; sourceTree = "<group>"; };
+		78007F3621EF13A7006A78D5 /* NewsListTableFooterView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewsListTableFooterView.h; sourceTree = "<group>"; };
+		78007F3721EF13A7006A78D5 /* NewsListTableFooterView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsListTableFooterView.m; sourceTree = "<group>"; };
+		78007F3921EF13AE006A78D5 /* NewsListTableFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsListTableFooterView.xib; sourceTree = "<group>"; };
+		78007F3F21EF3215006A78D5 /* UITableView+ReuseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+ReuseView.h"; sourceTree = "<group>"; };
+		78007F4021EF3215006A78D5 /* UITableView+ReuseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+ReuseView.m"; sourceTree = "<group>"; };
 		787B5E4321E0FA7500271CED /* AppliancesTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppliancesTableViewCell.h; sourceTree = "<group>"; };
 		787B5E4421E0FA7500271CED /* AppliancesTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppliancesTableViewCell.m; sourceTree = "<group>"; };
 		787B5E4521E0FA7500271CED /* AppliancesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AppliancesTableViewCell.xib; sourceTree = "<group>"; };
@@ -78,6 +96,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		78007F3E21EF3209006A78D5 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				78007F3F21EF3215006A78D5 /* UITableView+ReuseView.h */,
+				78007F4021EF3215006A78D5 /* UITableView+ReuseView.m */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		78CD614521E043CA008B160F = {
 			isa = PBXGroup;
 			children = (
@@ -99,6 +126,7 @@
 		78CD615021E043CA008B160F /* CBTableViewSecret */ = {
 			isa = PBXGroup;
 			children = (
+				78007F3E21EF3209006A78D5 /* Utils */,
 				78CD617421E06ED6008B160F /* Resource */,
 				78CD616821E0480B008B160F /* Controller */,
 				78CD616921E04825008B160F /* View */,
@@ -150,6 +178,15 @@
 				787B5E4321E0FA7500271CED /* AppliancesTableViewCell.h */,
 				787B5E4421E0FA7500271CED /* AppliancesTableViewCell.m */,
 				787B5E4521E0FA7500271CED /* AppliancesTableViewCell.xib */,
+				78007F2C21EF12CF006A78D5 /* NewsListTableHeaderView.h */,
+				78007F2D21EF12CF006A78D5 /* NewsListTableHeaderView.m */,
+				78007F3221EF1349006A78D5 /* NewsListTableHeaderView.xib */,
+				78007F3621EF13A7006A78D5 /* NewsListTableFooterView.h */,
+				78007F3721EF13A7006A78D5 /* NewsListTableFooterView.m */,
+				78007F3921EF13AE006A78D5 /* NewsListTableFooterView.xib */,
+				78007F2F21EF12F4006A78D5 /* AppliancesTableHeaderView.h */,
+				78007F3021EF12F4006A78D5 /* AppliancesTableHeaderView.m */,
+				78007F3421EF136E006A78D5 /* AppliancesTableHeaderView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -248,12 +285,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78007F3521EF136E006A78D5 /* AppliancesTableHeaderView.xib in Resources */,
 				78CD618621E09F10008B160F /* Person.json in Resources */,
 				78CD617E21E09C80008B160F /* NewsList.json in Resources */,
+				78007F3A21EF13AE006A78D5 /* NewsListTableFooterView.xib in Resources */,
 				78CD618D21E0A342008B160F /* Appliances.json in Resources */,
 				78CD615E21E043CC008B160F /* LaunchScreen.storyboard in Resources */,
 				78CD615B21E043CC008B160F /* Assets.xcassets in Resources */,
 				78CD617D21E098D5008B160F /* NewsListTableViewCell.xib in Resources */,
+				78007F3321EF1349006A78D5 /* NewsListTableHeaderView.xib in Resources */,
 				78CD615921E043CA008B160F /* Main.storyboard in Resources */,
 				787B5E4721E0FA7500271CED /* AppliancesTableViewCell.xib in Resources */,
 			);
@@ -292,11 +332,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				78CD615621E043CA008B160F /* ViewController.m in Sources */,
+				78007F2E21EF12CF006A78D5 /* NewsListTableHeaderView.m in Sources */,
 				78CD618921E0A1BC008B160F /* AppliancesModel.m in Sources */,
+				78007F3821EF13A7006A78D5 /* NewsListTableFooterView.m in Sources */,
 				78CD617321E04D32008B160F /* CBTableViewDisplayInfo.m in Sources */,
 				787B5E4621E0FA7500271CED /* AppliancesTableViewCell.m in Sources */,
+				78007F4121EF3215006A78D5 /* UITableView+ReuseView.m in Sources */,
 				78CD616121E043CC008B160F /* main.m in Sources */,
 				78CD615321E043CA008B160F /* AppDelegate.m in Sources */,
+				78007F3121EF12F4006A78D5 /* AppliancesTableHeaderView.m in Sources */,
 				78CD617021E04C7D008B160F /* CBTableViewDataSourceAndDelegate.m in Sources */,
 				78CD616D21E048FF008B160F /* CBSecretVC.m in Sources */,
 				78CD618421E09EC1008B160F /* PersonModel.m in Sources */,
@@ -445,7 +489,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = JFQY5DS237;
+				DEVELOPMENT_TEAM = UT4AF9HRGD;
 				INFOPLIST_FILE = CBTableViewSecret/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -463,7 +507,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = JFQY5DS237;
+				DEVELOPMENT_TEAM = UT4AF9HRGD;
 				INFOPLIST_FILE = CBTableViewSecret/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
