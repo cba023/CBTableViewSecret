@@ -121,7 +121,6 @@
     _tvSecret = [CBTableViewSecret secretWithTableView:self.tableView display:display];
     _tvSecret.didSelectRowAtIndexPath = ^(UITableView *tableView, NSIndexPath *indexPath) {
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
-        [tableView reloadData];
     };
 }
 
