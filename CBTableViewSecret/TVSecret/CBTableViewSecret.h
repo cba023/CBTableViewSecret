@@ -9,9 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "CBTableViewDisplayInfo.h"
 
+
 @interface CBTableViewSecret : NSObject<UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong)CBTableViewDisplay *display;
-- (instancetype)initWithDisplay:(CBTableViewDisplay *)display tableView:(UITableView *)tableView;
+- (instancetype)initWithTableView:(UITableView *)tableView display:(CBTableViewDisplay *)display;
++ (instancetype)secretWithTableView:(UITableView *)tableView display:(CBTableViewDisplay *)display;
 
 @end

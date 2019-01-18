@@ -22,7 +22,6 @@
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) CBTableViewSecret *tvSecret;
-@property (nonatomic, strong) CBTableViewDisplay * displayInfo;
 @property (nonatomic, strong) NewsModel * newsModel;
 @property (nonatomic, strong) PersonModel * personModel;
 @property (nonatomic, strong) AppliancesModel *appliancesModel;
@@ -67,9 +66,9 @@
 }
 
 - (void)formatDataSource {
-    self.displayInfo = [[CBTableViewDisplay alloc] initWithSectionsBlock:^(NSMutableArray<CBTableViewSectionDisplay *> *sections) {
+    CBTableViewDisplay *display = [CBTableViewDisplay displayWithSectionsBlock:^(NSMutableArray<CBTableViewSectionDisplay *> *sections) {
         // 1.News
-        CBTableViewSectionDisplay *sec0 = [[CBTableViewSectionDisplay alloc] initWithHeaderHeight:45.0 autoHeaderHeight:NO footerHeight:CGFLOAT_MIN autoFooterHeight:NO rowsBlock:^(NSMutableArray<CBTableViewRowDisplay *> *rows) {
+        CBTableViewSectionDisplay *sec0 = [CBTableViewSectionDisplay displayWithHeaderHeight:45.0 autoHeaderHeight:NO footerHeight:CGFLOAT_MIN autoFooterHeight:NO rowsBlock:^(NSMutableArray<CBTableViewRowDisplay *> *rows) {
             for (NSInteger i = 0; i < self.newsModel.newslist.count; i++) {
                 CBTableViewRowDisplay * row = [[CBTableViewRowDisplay alloc] initWithCellHeight:60 autoCellHeight:YES];
                 row.cellForRowAtIndexPath = ^UITableViewCell * _Nullable(UITableView *tableView, NSIndexPath *indexPathed) {
@@ -90,7 +89,7 @@
             return header;
         };
         // 2.Appliances
-        CBTableViewSectionDisplay * sec1 = [[CBTableViewSectionDisplay alloc] initWithHeaderHeight:90 autoHeaderHeight:NO footerHeight:CGFLOAT_MIN autoFooterHeight:NO rowsBlock:^(NSMutableArray<CBTableViewRowDisplay *> *rows) {
+        CBTableViewSectionDisplay * sec1 = [CBTableViewSectionDisplay displayWithHeaderHeight:90 autoHeaderHeight:NO footerHeight:CGFLOAT_MIN autoFooterHeight:NO rowsBlock:^(NSMutableArray<CBTableViewRowDisplay *> *rows) {
             CBTableViewRowDisplay * row = [[CBTableViewRowDisplay alloc] initWithCellHeight:50 autoCellHeight:NO];
             row.cellForRowAtIndexPath = ^UITableViewCell * _Nullable(UITableView *tableView, NSIndexPath *indexPath) {
                 AppliancesTableViewCell *cell = [tableView cellWithClass:[AppliancesTableViewCell class] fileType:FileTypeNib];
@@ -109,7 +108,7 @@
         [sections addObject:sec0];
         [sections addObject:sec1];
     }];
-    _tvSecret = [[CBTableViewSecret alloc] initWithDisplay:self.displayInfo tableView:self.tableView];
+    _tvSecret = [CBTableViewSecret secretWithTableView:self.tableView display:display];
 }
 
 

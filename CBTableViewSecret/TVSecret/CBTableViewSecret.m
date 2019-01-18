@@ -10,7 +10,11 @@
 
 @implementation CBTableViewSecret
 
-- (instancetype)initWithDisplay:(CBTableViewDisplay *)display tableView:(UITableView *)tableView {
++ (instancetype)secretWithTableView:(UITableView *)tableView display:(CBTableViewDisplay *)display {
+    return [[self alloc] initWithTableView:tableView display:display];
+}
+
+- (instancetype)initWithTableView:(UITableView *)tableView display:(CBTableViewDisplay *)display {
     self = [super init];
     if (self) {
         _display = display;
@@ -96,6 +100,5 @@
         mdRow.didSelectRowAtIndexPath(tableView, indexPath);
     }
 }
-
 
 @end

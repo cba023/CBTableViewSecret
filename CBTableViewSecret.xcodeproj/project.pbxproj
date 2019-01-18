@@ -96,13 +96,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		78007F3E21EF3209006A78D5 /* Utils */ = {
+		78007F3E21EF3209006A78D5 /* Util */ = {
 			isa = PBXGroup;
 			children = (
 				78007F3F21EF3215006A78D5 /* UITableView+ReuseView.h */,
 				78007F4021EF3215006A78D5 /* UITableView+ReuseView.m */,
 			);
-			path = Utils;
+			path = Util;
 			sourceTree = "<group>";
 		};
 		78CD614521E043CA008B160F = {
@@ -126,7 +126,7 @@
 		78CD615021E043CA008B160F /* CBTableViewSecret */ = {
 			isa = PBXGroup;
 			children = (
-				78007F3E21EF3209006A78D5 /* Utils */,
+				78007F3E21EF3209006A78D5 /* Util */,
 				78CD617421E06ED6008B160F /* Resource */,
 				78CD616821E0480B008B160F /* Controller */,
 				78CD616921E04825008B160F /* View */,

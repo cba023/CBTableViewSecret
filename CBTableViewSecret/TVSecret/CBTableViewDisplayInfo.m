@@ -38,6 +38,10 @@
     return self;
 }
 
++ (instancetype)displayWithHeaderHeight:(CGFloat)headerHeight autoHeaderHeight:(BOOL)autoHeaderHeight footerHeight:(CGFloat)footerHeight autoFooterHeight:(BOOL)autoFooterHeight rowsBlock:(void (^)(NSMutableArray<CBTableViewRowDisplay *> * rows))rowsBlock {
+    return [[self alloc] initWithHeaderHeight:headerHeight autoHeaderHeight:autoHeaderHeight footerHeight:footerHeight autoFooterHeight:autoFooterHeight rowsBlock:rowsBlock];
+}
+
 @end
 
 @implementation CBTableViewDisplay
@@ -48,6 +52,10 @@
         sectionsBlock(_sections);
     }
     return self;
+}
+
++ (instancetype)displayWithSectionsBlock:(void(^)(NSMutableArray<CBTableViewSectionDisplay *>* sections))sectionsBlock {
+    return  [[self alloc] initWithSectionsBlock:sectionsBlock];
 }
 
 @end
