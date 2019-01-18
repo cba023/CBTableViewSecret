@@ -17,6 +17,8 @@
 #import "NewsListTableViewCell.h"
 #import "AppliancesTableViewCell.h"
 #import "UITableView+ReuseView.h"
+#import "PersonTCell.h"
+#import "CBUtil.h"
 
 @interface CBSecretVC ()
 
@@ -45,24 +47,12 @@
 
 /// 配置数据
 - (void)configData {
-    NSDictionary *dicNews = [self getDataFromJsonPath:@"NewsList" fileType:@"json"];
+    NSDictionary *dicNews = [CBUtil getDataFromJsonPath:@"NewsList" fileType:@"json"];
     self.newsModel = [NewsModel yy_modelWithDictionary:dicNews];
-    NSDictionary *dicPerson = [self getDataFromJsonPath:@"Person" fileType:@"json"];
+    NSDictionary *dicPerson = [CBUtil getDataFromJsonPath:@"Person" fileType:@"json"];
     self.personModel = [PersonModel yy_modelWithDictionary:dicPerson];
-    NSDictionary *dicAppliances = [self getDataFromJsonPath:@"Appliances" fileType:@"json"];
+    NSDictionary *dicAppliances = [CBUtil getDataFromJsonPath:@"Appliances" fileType:@"json"];
     self.appliancesModel = [AppliancesModel yy_modelWithDictionary:dicAppliances];
-}
-
-- (id)loadXibByName:(NSString *)name {
-    id view = [[NSBundle mainBundle] loadNibNamed:name owner:self options:nil].firstObject;
-    return view;
-}
-
-- (NSDictionary *)getDataFromJsonPath:(NSString *)path fileType:(NSString * _Nullable)fileType {
-    NSError *error;
-    NSString * jsonPath = [[NSBundle mainBundle] pathForResource:path ofType:fileType];
-    NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:jsonPath] options:NSJSONReadingMutableLeaves error:&error];
-    return jsonDic;
 }
 
 - (void)formatDataSource {
@@ -70,8 +60,8 @@
         // 1.News
         CBTableViewSectionDisplay *sec0 = [CBTableViewSectionDisplay displayWithHeaderHeight:45.0 autoHeaderHeight:NO footerHeight:CGFLOAT_MIN autoFooterHeight:NO rowsBlock:^(NSMutableArray<CBTableViewRowDisplay *> *rows) {
             for (NSInteger i = 0; i < self.newsModel.newslist.count; i++) {
-                CBTableViewRowDisplay * row = [[CBTableViewRowDisplay alloc] initWithCellHeight:60 autoCellHeight:YES];
-                row.cellForRowAtIndexPath = ^UITableViewCell * _Nullable(UITableView *tableView, NSIndexPath *indexPathed) {
+                CBTableViewRowDisplay * row = [CBTableViewRowDisplay displayWithCellHeight:60.0 autoCellHeight:YES];
+                row.cellForRowAtIndexPath = ^UITableViewCell *(UITableView *tableView, NSIndexPath *indexPathed) {
                     NewsListTableViewCell *cell = [tableView cellWithClass:[NewsListTableViewCell class] fileType:FileTypeNib];
                     cell.lblTitle.text = self.newsModel.newslist[i].title;
                     cell.lblSubTitle.text = self.newsModel.newslist[i].source;
@@ -81,6 +71,12 @@
                     NSLog(@"新闻列表点击 - %ld - %ld -", indexPath.section, indexPath.row);
                 };
                 [rows addObject:row];
+                CBTableViewRowDisplay * rowPerson = [CBTableViewRowDisplay displayWithCellHeight:70 autoCellHeight:NO];
+                rowPerson.cellForRowAtIndexPath = ^UITableViewCell *(UITableView *tableView, NSIndexPath *indexPath) {
+                    PersonTCell * cell = [tableView cellWithClass:[PersonTCell class] fileType:FileTypeClass];
+                    return cell;
+                };
+                [rows addObject:rowPerson];
             }
         }];
         sec0.viewForHeader = ^UIView *(UITableView *tableView, NSInteger section) {
@@ -90,8 +86,8 @@
         };
         // 2.Appliances
         CBTableViewSectionDisplay * sec1 = [CBTableViewSectionDisplay displayWithHeaderHeight:90 autoHeaderHeight:NO footerHeight:CGFLOAT_MIN autoFooterHeight:NO rowsBlock:^(NSMutableArray<CBTableViewRowDisplay *> *rows) {
-            CBTableViewRowDisplay * row = [[CBTableViewRowDisplay alloc] initWithCellHeight:50 autoCellHeight:NO];
-            row.cellForRowAtIndexPath = ^UITableViewCell * _Nullable(UITableView *tableView, NSIndexPath *indexPath) {
+            CBTableViewRowDisplay * row = [CBTableViewRowDisplay displayWithCellHeight:90.0 autoCellHeight:NO];
+            row.cellForRowAtIndexPath = ^UITableViewCell *(UITableView *tableView, NSIndexPath *indexPath) {
                 AppliancesTableViewCell *cell = [tableView cellWithClass:[AppliancesTableViewCell class] fileType:FileTypeNib];
                 AppliancesModel *md = self.appliancesModel;
                 cell.lblName.text = md.name;
@@ -99,6 +95,7 @@
                 cell.lblPrice.text = [NSString stringWithFormat:@"%.2f",md.price];
                 return cell;
             };
+            [rows addObject:row];
         }];
         sec1.viewForHeader = ^UIView *(UITableView *tableView, NSInteger section) {
             AppliancesTableHeaderView *header = [tableView headerFooterFromNib:[AppliancesTableHeaderView class]];
@@ -109,6 +106,10 @@
         [sections addObject:sec1];
     }];
     _tvSecret = [CBTableViewSecret secretWithTableView:self.tableView display:display];
+    _tvSecret.didSelectRowAtIndexPath = ^(UITableView *tableView, NSIndexPath *indexPath) {
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    };
+    
 }
 
 

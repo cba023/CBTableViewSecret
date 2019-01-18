@@ -74,7 +74,7 @@
     if (mdRow.cellForRowAtIndexPath) {
         return mdRow.cellForRowAtIndexPath(tableView, indexPath);
     }
-    return [[UITableViewCell alloc] init];
+    return [UITableViewCell new];
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
@@ -96,6 +96,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     CBTableViewSectionDisplay * mdSection = self.display.sections[indexPath.section];
     CBTableViewRowDisplay * mdRow = mdSection.listRow[indexPath.row];
+    if (self.didSelectRowAtIndexPath) {
+        self .didSelectRowAtIndexPath(tableView, indexPath);
+    }
     if (mdRow.didSelectRowAtIndexPath) {
         mdRow.didSelectRowAtIndexPath(tableView, indexPath);
     }

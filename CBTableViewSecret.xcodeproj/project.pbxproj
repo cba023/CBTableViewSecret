@@ -14,6 +14,9 @@
 		78007F3821EF13A7006A78D5 /* NewsListTableFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 78007F3721EF13A7006A78D5 /* NewsListTableFooterView.m */; };
 		78007F3A21EF13AE006A78D5 /* NewsListTableFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78007F3921EF13AE006A78D5 /* NewsListTableFooterView.xib */; };
 		78007F4121EF3215006A78D5 /* UITableView+ReuseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 78007F4021EF3215006A78D5 /* UITableView+ReuseView.m */; };
+		78007F4421F17D64006A78D5 /* PersonTCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 78007F4321F17D64006A78D5 /* PersonTCell.m */; };
+		78007F4721F1812B006A78D5 /* CBNormalVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 78007F4621F1812B006A78D5 /* CBNormalVC.m */; };
+		78007F4A21F1814F006A78D5 /* CBUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 78007F4921F1814F006A78D5 /* CBUtil.m */; };
 		7879D14F21F0A99C00CFA2D8 /* CBTableViewSecret.m in Sources */ = {isa = PBXBuildFile; fileRef = 7879D14D21F0A99C00CFA2D8 /* CBTableViewSecret.m */; };
 		787B5E4621E0FA7500271CED /* AppliancesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 787B5E4421E0FA7500271CED /* AppliancesTableViewCell.m */; };
 		787B5E4721E0FA7500271CED /* AppliancesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 787B5E4521E0FA7500271CED /* AppliancesTableViewCell.xib */; };
@@ -49,6 +52,12 @@
 		78007F3921EF13AE006A78D5 /* NewsListTableFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsListTableFooterView.xib; sourceTree = "<group>"; };
 		78007F3F21EF3215006A78D5 /* UITableView+ReuseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+ReuseView.h"; sourceTree = "<group>"; };
 		78007F4021EF3215006A78D5 /* UITableView+ReuseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+ReuseView.m"; sourceTree = "<group>"; };
+		78007F4221F17D64006A78D5 /* PersonTCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PersonTCell.h; sourceTree = "<group>"; };
+		78007F4321F17D64006A78D5 /* PersonTCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonTCell.m; sourceTree = "<group>"; };
+		78007F4521F1812B006A78D5 /* CBNormalVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CBNormalVC.h; sourceTree = "<group>"; };
+		78007F4621F1812B006A78D5 /* CBNormalVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CBNormalVC.m; sourceTree = "<group>"; };
+		78007F4821F1814F006A78D5 /* CBUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CBUtil.h; sourceTree = "<group>"; };
+		78007F4921F1814F006A78D5 /* CBUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CBUtil.m; sourceTree = "<group>"; };
 		7879D14D21F0A99C00CFA2D8 /* CBTableViewSecret.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBTableViewSecret.m; sourceTree = "<group>"; };
 		7879D14E21F0A99C00CFA2D8 /* CBTableViewSecret.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBTableViewSecret.h; sourceTree = "<group>"; };
 		787B5E4321E0FA7500271CED /* AppliancesTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppliancesTableViewCell.h; sourceTree = "<group>"; };
@@ -101,6 +110,8 @@
 			children = (
 				78007F3F21EF3215006A78D5 /* UITableView+ReuseView.h */,
 				78007F4021EF3215006A78D5 /* UITableView+ReuseView.m */,
+				78007F4821F1814F006A78D5 /* CBUtil.h */,
+				78007F4921F1814F006A78D5 /* CBUtil.m */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -161,6 +172,8 @@
 		78CD616821E0480B008B160F /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				78007F4521F1812B006A78D5 /* CBNormalVC.h */,
+				78007F4621F1812B006A78D5 /* CBNormalVC.m */,
 				78CD616B21E048FF008B160F /* CBSecretVC.h */,
 				78CD616C21E048FF008B160F /* CBSecretVC.m */,
 			);
@@ -185,6 +198,8 @@
 				78007F2F21EF12F4006A78D5 /* AppliancesTableHeaderView.h */,
 				78007F3021EF12F4006A78D5 /* AppliancesTableHeaderView.m */,
 				78007F3421EF136E006A78D5 /* AppliancesTableHeaderView.xib */,
+				78007F4221F17D64006A78D5 /* PersonTCell.h */,
+				78007F4321F17D64006A78D5 /* PersonTCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -333,7 +348,10 @@
 			files = (
 				78CD615621E043CA008B160F /* ViewController.m in Sources */,
 				78007F2E21EF12CF006A78D5 /* NewsListTableHeaderView.m in Sources */,
+				78007F4A21F1814F006A78D5 /* CBUtil.m in Sources */,
+				78007F4721F1812B006A78D5 /* CBNormalVC.m in Sources */,
 				78CD618921E0A1BC008B160F /* AppliancesModel.m in Sources */,
+				78007F4421F17D64006A78D5 /* PersonTCell.m in Sources */,
 				78007F3821EF13A7006A78D5 /* NewsListTableFooterView.m in Sources */,
 				78CD617321E04D32008B160F /* CBTableViewDisplayInfo.m in Sources */,
 				787B5E4621E0FA7500271CED /* AppliancesTableViewCell.m in Sources */,

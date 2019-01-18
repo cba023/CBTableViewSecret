@@ -9,10 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "CBTableViewDisplayInfo.h"
 
-
 @interface CBTableViewSecret : NSObject<UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong)CBTableViewDisplay *display;
+@property (nonatomic, copy) void(^didSelectRowAtIndexPath)(UITableView *tableView, NSIndexPath *indexPath);
 - (instancetype)initWithTableView:(UITableView *)tableView display:(CBTableViewDisplay *)display;
 + (instancetype)secretWithTableView:(UITableView *)tableView display:(CBTableViewDisplay *)display;
 

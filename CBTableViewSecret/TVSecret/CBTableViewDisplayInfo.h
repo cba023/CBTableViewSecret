@@ -8,22 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-typedef UIView *(^ViewForHeaderInSectionBlock)(UITableView *tableView, NSInteger section);
-typedef UIView *(^ViewForFooterInSectionBlock)(UITableView *tableView, NSInteger section);
-typedef UITableViewCell* _Nullable (^CellForRowAtIndexPathBlock)(UITableView *tableView, NSIndexPath *indexPath);
-typedef void(^DidSelectRowAtIndexPathBlock)(UITableView *tableView, NSIndexPath *indexPath);
-
-
 @interface CBTableViewRowDisplay : NSObject
 
 @property (nonatomic, assign) CGFloat cellHeight;
 @property (nonatomic, assign, readonly) CGFloat cellEstimatedHeight;
-@property (nonatomic, strong, nullable) Class cellClass;
-@property (nonatomic, assign) BOOL shouldAutoCellHeight;
-@property (nonatomic, copy) CellForRowAtIndexPathBlock cellForRowAtIndexPath;
-@property (nonatomic, copy) DidSelectRowAtIndexPathBlock didSelectRowAtIndexPath;
+@property (nonatomic, assign) BOOL autoCellHeight;
+@property (nonatomic, copy) UITableViewCell* (^cellForRowAtIndexPath)(UITableView *tableView, NSIndexPath *indexPath);
+@property (nonatomic, copy) void(^didSelectRowAtIndexPath)(UITableView *tableView, NSIndexPath *indexPath);
 
-- (instancetype)initWithCellHeight:(CGFloat)cellHeight autoCellHeight:(BOOL)shouldAutoCellHeight;
++ (instancetype)displayWithCellHeight:(CGFloat)cellHeight autoCellHeight:(BOOL)autoCellHeight;
 
 @end
 
@@ -36,10 +29,9 @@ typedef void(^DidSelectRowAtIndexPathBlock)(UITableView *tableView, NSIndexPath 
 @property (nonatomic, assign, readonly) CGFloat footerEstimatedHeight;
 @property (nonatomic, assign) BOOL autoHeaderHeight;
 @property (nonatomic, assign) BOOL autoFooterHeight;
-@property (nonatomic, copy) ViewForHeaderInSectionBlock viewForHeader;
-@property (nonatomic, copy) ViewForFooterInSectionBlock viewForFooter;
+@property (nonatomic, copy) UIView *(^viewForHeader)(UITableView *tableView, NSInteger section);
+@property (nonatomic, copy) UIView *(^viewForFooter)(UITableView *tableView, NSInteger section);
 
-- (instancetype)initWithHeaderHeight:(CGFloat)headerHeight autoHeaderHeight:(BOOL)autoHeaderHeight footerHeight:(CGFloat)footerHeight autoFooterHeight:(BOOL)autoFooterHeight rowsBlock:(void (^)(NSMutableArray<CBTableViewRowDisplay *> * rows))rowsBlock;
 + (instancetype)displayWithHeaderHeight:(CGFloat)headerHeight autoHeaderHeight:(BOOL)autoHeaderHeight footerHeight:(CGFloat)footerHeight autoFooterHeight:(BOOL)autoFooterHeight rowsBlock:(void (^)(NSMutableArray<CBTableViewRowDisplay *> * rows))rowsBlock;
 
 @end
