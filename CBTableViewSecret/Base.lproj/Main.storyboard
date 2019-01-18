@@ -19,17 +19,30 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IdZ-aN-0zK">
-                                <rect key="frame" x="172.5" y="350.5" width="30" height="30"/>
-                                <state key="normal" title="Go"/>
+                                <rect key="frame" x="161" y="350.5" width="53" height="30"/>
+                                <state key="normal" title="Modern">
+                                    <color key="titleColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="btnGoClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="UVb-qh-kgr"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sko-rx-tvJ">
+                                <rect key="frame" x="151.5" y="253" width="72" height="30"/>
+                                <state key="normal" title="Traditional">
+                                    <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="lookBackAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Jcr-Gr-Wl7"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="IdZ-aN-0zK" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="86s-Tj-xUL"/>
+                            <constraint firstItem="Sko-rx-tvJ" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="MLd-Zu-YO8"/>
                             <constraint firstItem="IdZ-aN-0zK" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="YVN-Fh-FlR"/>
+                            <constraint firstItem="IdZ-aN-0zK" firstAttribute="top" secondItem="Sko-rx-tvJ" secondAttribute="bottom" constant="67.5" id="gXv-4w-OR4"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

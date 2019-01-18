@@ -10,10 +10,6 @@
 
 @interface PersonTCell ()
 
-@property (nonatomic, strong) UILabel * lblName;
-@property (nonatomic, strong) UILabel * lblAge;
-@property (nonatomic, strong) UILabel * lblGender;
-
 @end
 
 @implementation PersonTCell
@@ -27,17 +23,16 @@
         [self.contentView addSubview:_lblName];
         [self.contentView addSubview:_lblAge];
         [self.contentView addSubview:_lblGender];
+        self.contentView.backgroundColor = UIColor.yellowColor;
     }
     return self;
 }
 
 - (void)layoutSubviews {
+    [super layoutSubviews];
     [_lblName setFrame:CGRectMake(15, 15, 200, 20)];
     [_lblAge setFrame:CGRectMake(15, 40, 100, 20)];
     [_lblGender setFrame:CGRectMake(self.contentView.bounds.size.width - 60, 40, 60, 20)];
-    _lblName.text = @"张三";
-    _lblGender.text = @"男";
-    _lblAge.text = @"25";
 }
 
 @end

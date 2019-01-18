@@ -10,25 +10,25 @@
 
 @interface CBTableViewRowDisplay : NSObject
 
-@property (nonatomic, assign) CGFloat cellHeight;
+@property (nonatomic, assign, readonly) CGFloat cellHeight;
 @property (nonatomic, assign, readonly) CGFloat cellEstimatedHeight;
-@property (nonatomic, assign) BOOL autoCellHeight;
-@property (nonatomic, copy) UITableViewCell* (^cellForRowAtIndexPath)(UITableView *tableView, NSIndexPath *indexPath);
+@property (nonatomic, assign, readonly) BOOL autoCellHeight;
+@property (nonatomic, copy, readonly) UITableViewCell* (^cellForRowAtIndexPath)(UITableView *tableView, NSIndexPath *indexPath);
 @property (nonatomic, copy) void(^didSelectRowAtIndexPath)(UITableView *tableView, NSIndexPath *indexPath);
 
-+ (instancetype)displayWithCellHeight:(CGFloat)cellHeight autoCellHeight:(BOOL)autoCellHeight;
++ (instancetype)displayWithCellHeight:(CGFloat)cellHeight autoCellHeight:(BOOL)autoCellHeight cellForRowAtIndexPath: (UITableViewCell* (^)(UITableView *tableView, NSIndexPath *indexPath))cellForRowAtIndexPath;
 
 @end
 
 @interface CBTableViewSectionDisplay : NSObject
 
 @property (nonatomic , copy) NSMutableArray<CBTableViewRowDisplay *>              * listRow;
-@property (nonatomic, assign) CGFloat headerHeight;
-@property (nonatomic, assign) CGFloat footerHeight;
+@property (nonatomic, assign, readonly) CGFloat headerHeight;
+@property (nonatomic, assign, readonly) CGFloat footerHeight;
 @property (nonatomic, assign, readonly) CGFloat headerEstimatedHeight;
 @property (nonatomic, assign, readonly) CGFloat footerEstimatedHeight;
-@property (nonatomic, assign) BOOL autoHeaderHeight;
-@property (nonatomic, assign) BOOL autoFooterHeight;
+@property (nonatomic, assign, readonly) BOOL autoHeaderHeight;
+@property (nonatomic, assign, readonly) BOOL autoFooterHeight;
 @property (nonatomic, copy) UIView *(^viewForHeader)(UITableView *tableView, NSInteger section);
 @property (nonatomic, copy) UIView *(^viewForFooter)(UITableView *tableView, NSInteger section);
 
@@ -39,7 +39,7 @@
 @interface CBTableViewDisplay : NSObject
 
 @property (nonatomic, copy) NSMutableArray<CBTableViewSectionDisplay *>              * sections;
-- (instancetype)initWithSectionsBlock:(void(^)(NSMutableArray<CBTableViewSectionDisplay *>* sections))sectionsBlock ;
+
 + (instancetype)displayWithSectionsBlock:(void(^)(NSMutableArray<CBTableViewSectionDisplay *>* sections))sectionsBlock;
 
 @end

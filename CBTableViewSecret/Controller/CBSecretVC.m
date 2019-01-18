@@ -18,6 +18,7 @@
 #import "AppliancesTableViewCell.h"
 #import "UITableView+ReuseView.h"
 #import "PersonTCell.h"
+#import "AnimalTCell.h"
 #import "CBUtil.h"
 
 @interface CBSecretVC ()
@@ -34,10 +35,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"Secret";
+    self.title = @"Secret现代写法";
     [self configUI];
     [self configData];
-    [self formatDataSource];
+    [self display];
 }
 
 - (void)configUI {
@@ -55,28 +56,21 @@
     self.appliancesModel = [AppliancesModel yy_modelWithDictionary:dicAppliances];
 }
 
-- (void)formatDataSource {
+- (void)display {
     CBTableViewDisplay *display = [CBTableViewDisplay displayWithSectionsBlock:^(NSMutableArray<CBTableViewSectionDisplay *> *sections) {
         // 1.News
-        CBTableViewSectionDisplay *sec0 = [CBTableViewSectionDisplay displayWithHeaderHeight:45.0 autoHeaderHeight:NO footerHeight:CGFLOAT_MIN autoFooterHeight:NO rowsBlock:^(NSMutableArray<CBTableViewRowDisplay *> *rows) {
+        CBTableViewSectionDisplay *sec0 = [CBTableViewSectionDisplay displayWithHeaderHeight:45.0 autoHeaderHeight:NO footerHeight:50.0 autoFooterHeight:NO rowsBlock:^(NSMutableArray<CBTableViewRowDisplay *> *rows) {
             for (NSInteger i = 0; i < self.newsModel.newslist.count; i++) {
-                CBTableViewRowDisplay * row = [CBTableViewRowDisplay displayWithCellHeight:60.0 autoCellHeight:YES];
-                row.cellForRowAtIndexPath = ^UITableViewCell *(UITableView *tableView, NSIndexPath *indexPathed) {
+                CBTableViewRowDisplay * row = [CBTableViewRowDisplay displayWithCellHeight:60.0 autoCellHeight:YES cellForRowAtIndexPath:^UITableViewCell *(UITableView *tableView, NSIndexPath *indexPath) {
                     NewsListTableViewCell *cell = [tableView cellWithClass:[NewsListTableViewCell class] fileType:FileTypeNib];
                     cell.lblTitle.text = self.newsModel.newslist[i].title;
                     cell.lblSubTitle.text = self.newsModel.newslist[i].source;
                     return cell;
-                };
+                }];
                 row.didSelectRowAtIndexPath = ^(UITableView *tableView, NSIndexPath *indexPath) {
                     NSLog(@"新闻列表点击 - %ld - %ld -", indexPath.section, indexPath.row);
                 };
                 [rows addObject:row];
-                CBTableViewRowDisplay * rowPerson = [CBTableViewRowDisplay displayWithCellHeight:70 autoCellHeight:NO];
-                rowPerson.cellForRowAtIndexPath = ^UITableViewCell *(UITableView *tableView, NSIndexPath *indexPath) {
-                    PersonTCell * cell = [tableView cellWithClass:[PersonTCell class] fileType:FileTypeClass];
-                    return cell;
-                };
-                [rows addObject:rowPerson];
             }
         }];
         sec0.viewForHeader = ^UIView *(UITableView *tableView, NSInteger section) {
@@ -84,17 +78,21 @@
             header.lblTitle.text = @"新闻列表";
             return header;
         };
+        sec0.viewForFooter = ^UIView *(UITableView *tableView, NSInteger section) {
+            NewsListTableFooterView * footer = [tableView headerFooterFromNib:[NewsListTableFooterView class]];
+            footer.lblDesc.text = @"上面是新闻";
+            return footer;
+        };
         // 2.Appliances
-        CBTableViewSectionDisplay * sec1 = [CBTableViewSectionDisplay displayWithHeaderHeight:90 autoHeaderHeight:NO footerHeight:CGFLOAT_MIN autoFooterHeight:NO rowsBlock:^(NSMutableArray<CBTableViewRowDisplay *> *rows) {
-            CBTableViewRowDisplay * row = [CBTableViewRowDisplay displayWithCellHeight:90.0 autoCellHeight:NO];
-            row.cellForRowAtIndexPath = ^UITableViewCell *(UITableView *tableView, NSIndexPath *indexPath) {
+        CBTableViewSectionDisplay *sec1 = [CBTableViewSectionDisplay displayWithHeaderHeight:90.0 autoHeaderHeight:NO footerHeight:CGFLOAT_MIN autoFooterHeight:NO rowsBlock:^(NSMutableArray<CBTableViewRowDisplay *> *rows) {
+            CBTableViewRowDisplay *row = [CBTableViewRowDisplay displayWithCellHeight:100.0 autoCellHeight:NO cellForRowAtIndexPath:^UITableViewCell *(UITableView *tableView, NSIndexPath *indexPath) {
                 AppliancesTableViewCell *cell = [tableView cellWithClass:[AppliancesTableViewCell class] fileType:FileTypeNib];
                 AppliancesModel *md = self.appliancesModel;
                 cell.lblName.text = md.name;
                 cell.lblColor.text = md.color;
                 cell.lblPrice.text = [NSString stringWithFormat:@"%.2f",md.price];
                 return cell;
-            };
+            }];
             [rows addObject:row];
         }];
         sec1.viewForHeader = ^UIView *(UITableView *tableView, NSInteger section) {
@@ -102,15 +100,29 @@
             header.lblName.text = @"这里的电器";
             return header;
         };
+        // 3. Animal & Person
+        CBTableViewSectionDisplay *sec2 = [CBTableViewSectionDisplay displayWithHeaderHeight:50.0 autoHeaderHeight:NO footerHeight:CGFLOAT_MIN autoFooterHeight:NO rowsBlock:^(NSMutableArray<CBTableViewRowDisplay *> *rows) {
+            CBTableViewRowDisplay *row0 = [CBTableViewRowDisplay displayWithCellHeight:self.tableView.bounds.size.width / 16.0 * 9.0 autoCellHeight:NO cellForRowAtIndexPath:^UITableViewCell *(UITableView *tableView, NSIndexPath *indexPath) {
+                AnimalTCell *cell = [tableView cellWithClass:[AnimalTCell class] fileType:FileTypeNib];
+                return cell;
+            }];
+            CBTableViewRowDisplay *row1 = [CBTableViewRowDisplay displayWithCellHeight:80.0 autoCellHeight:NO cellForRowAtIndexPath:^UITableViewCell *(UITableView *tableView, NSIndexPath *indexPath) {
+                PersonTCell * cell = [tableView cellWithClass:[PersonTCell class] fileType:FileTypeClass];
+                cell.lblName.text = @"张三";
+                return cell;
+            }];
+            [rows addObject:row0];
+            [rows addObject:row1];
+        }];
         [sections addObject:sec0];
         [sections addObject:sec1];
+        [sections addObject:sec2];
     }];
     _tvSecret = [CBTableViewSecret secretWithTableView:self.tableView display:display];
     _tvSecret.didSelectRowAtIndexPath = ^(UITableView *tableView, NSIndexPath *indexPath) {
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        [tableView reloadData];
     };
-    
 }
-
 
 @end

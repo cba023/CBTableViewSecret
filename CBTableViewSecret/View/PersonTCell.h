@@ -12,6 +12,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface PersonTCell : UITableViewCell
 
+@property (nonatomic, strong) UILabel * lblName;
+@property (nonatomic, strong) UILabel * lblAge;
+@property (nonatomic, strong) UILabel * lblGender;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -7,6 +7,7 @@
 //
 
 #import "CBTableViewSecret.h"
+#import "CBTableViewDisplayInfo.h"
 
 @implementation CBTableViewSecret
 
@@ -18,10 +19,8 @@
     self = [super init];
     if (self) {
         _display = display;
-        if (_display.sections.count > 0) {
-            tableView.delegate = self;
-            tableView.dataSource = self;
-        }
+        tableView.delegate = self;
+        tableView.dataSource = self;
     }
     return self;
 }

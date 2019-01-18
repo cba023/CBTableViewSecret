@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "CBSecretVC.h"
+#import "CBNormalVC.h"
 
 @interface ViewController ()
 
@@ -22,6 +23,11 @@
 
 - (IBAction)btnGoClick:(id)sender {
     CBSecretVC *vc = [[CBSecretVC alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (IBAction)lookBackAction:(id)sender {
+    CBNormalVC *vc = [[CBNormalVC alloc] init];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

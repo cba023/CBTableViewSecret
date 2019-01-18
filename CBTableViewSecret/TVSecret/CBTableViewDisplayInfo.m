@@ -10,18 +10,19 @@
 
 @implementation CBTableViewRowDisplay
 
-- (instancetype)initWithCellHeight:(CGFloat)cellHeight autoCellHeight:(BOOL)autoCellHeight {
+- (instancetype)initWithCellHeight:(CGFloat)cellHeight autoCellHeight:(BOOL)autoCellHeight cellForRowAtIndexPath: (UITableViewCell* (^)(UITableView *tableView, NSIndexPath *indexPath))cellForRowAtIndexPath {
     self = [super init];
     if (self) {
         _autoCellHeight = autoCellHeight;
         _cellEstimatedHeight = cellHeight;
         _cellHeight = _autoCellHeight == YES ? UITableViewAutomaticDimension : cellHeight;
+        _cellForRowAtIndexPath = cellForRowAtIndexPath;
     }
     return self;
 }
 
-+ (instancetype)displayWithCellHeight:(CGFloat)cellHeight autoCellHeight:(BOOL)autoCellHeight {
-    return [[self alloc] initWithCellHeight:cellHeight autoCellHeight:autoCellHeight];
++ (instancetype)displayWithCellHeight:(CGFloat)cellHeight autoCellHeight:(BOOL)autoCellHeight cellForRowAtIndexPath:(UITableViewCell *(^)(UITableView *, NSIndexPath *))cellForRowAtIndexPath {
+    return [[self alloc] initWithCellHeight:cellHeight autoCellHeight:autoCellHeight cellForRowAtIndexPath:cellForRowAtIndexPath];
 }
 
 @end
