@@ -63,7 +63,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    CGFloat heightForRow = _display.sections[indexPath.section].listRow[indexPath.row].cellHeight;
+    CGFloat heightForRow = _display.sections[indexPath.section].listRow[indexPath.row].cellEstimatedHeight;
     return heightForRow;
 }
 
@@ -96,7 +96,7 @@
     CBTableViewSectionDisplay * mdSection = self.display.sections[indexPath.section];
     CBTableViewRowDisplay * mdRow = mdSection.listRow[indexPath.row];
     if (self.didSelectRowAtIndexPath) {
-        self .didSelectRowAtIndexPath(tableView, indexPath);
+        self.didSelectRowAtIndexPath(tableView, indexPath);
     }
     if (mdRow.didSelectRowAtIndexPath) {
         mdRow.didSelectRowAtIndexPath(tableView, indexPath);
