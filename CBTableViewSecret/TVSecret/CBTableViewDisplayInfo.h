@@ -11,7 +11,6 @@
 @interface CBTableViewRowDisplay : NSObject
 
 @property (nonatomic, assign, readonly) CGFloat cellHeight;
-@property (nonatomic, assign, readonly) CGFloat cellEstimatedHeight;
 @property (nonatomic, assign, readonly) BOOL autoCellHeight;
 @property (nonatomic, copy, readonly) UITableViewCell* (^cellForRowAtIndexPath)(UITableView *tableView, NSIndexPath *indexPath);
 @property (nonatomic, copy) void(^didSelectRowAtIndexPath)(UITableView *tableView, NSIndexPath *indexPath);
@@ -25,8 +24,6 @@
 @property (nonatomic , copy) NSMutableArray<CBTableViewRowDisplay *>              * listRow;
 @property (nonatomic, assign, readonly) CGFloat headerHeight;
 @property (nonatomic, assign, readonly) CGFloat footerHeight;
-@property (nonatomic, assign, readonly) CGFloat headerEstimatedHeight;
-@property (nonatomic, assign, readonly) CGFloat footerEstimatedHeight;
 @property (nonatomic, assign, readonly) BOOL autoHeaderHeight;
 @property (nonatomic, assign, readonly) BOOL autoFooterHeight;
 @property (nonatomic, copy) UIView *(^viewForHeader)(UITableView *tableView, NSInteger section);

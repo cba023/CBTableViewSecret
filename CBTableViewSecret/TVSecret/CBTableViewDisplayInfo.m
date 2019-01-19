@@ -14,7 +14,6 @@
     self = [super init];
     if (self) {
         _autoCellHeight = autoCellHeight;
-        _cellEstimatedHeight = cellHeight;
         _cellHeight = _autoCellHeight == YES ? UITableViewAutomaticDimension : cellHeight;
         _cellForRowAtIndexPath = cellForRowAtIndexPath;
     }
@@ -33,8 +32,6 @@
     if (self) {
         _autoHeaderHeight = autoHeaderHeight;
         _autoFooterHeight = autoFooterHeight;
-        _headerEstimatedHeight = headerHeight;
-        _footerEstimatedHeight = footerHeight;
         _headerHeight = _autoHeaderHeight == YES ? UITableViewAutomaticDimension : headerHeight;
         _footerHeight = autoFooterHeight == YES ? UITableViewAutomaticDimension : footerHeight;
         _listRow = [NSMutableArray array];

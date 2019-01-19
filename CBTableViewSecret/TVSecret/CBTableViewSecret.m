@@ -43,7 +43,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForHeaderInSection:(NSInteger)section {
-    CGFloat heightForHeader = _display.sections[section].headerEstimatedHeight;
+    CGFloat heightForHeader = _display.sections[section].headerHeight;
     return heightForHeader;
 }
 
@@ -53,7 +53,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForFooterInSection:(NSInteger)section {
-    CGFloat heightForFooter = _display.sections[section].footerEstimatedHeight;
+    CGFloat heightForFooter = _display.sections[section].footerHeight;
     return heightForFooter;
 }
 
@@ -63,7 +63,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    CGFloat heightForRow = _display.sections[indexPath.section].listRow[indexPath.row].cellEstimatedHeight;
+    CGFloat heightForRow = _display.sections[indexPath.section].listRow[indexPath.row].cellHeight;
     return heightForRow;
 }
 
