@@ -154,7 +154,7 @@ CBTableViewDisplay | 外层类。用作CBTableViewSectionDisplay的外部调用�
 ```
 
 如上述，通过display的block回调，我们可以对tableView的具体实现控制。
-需要注意的是，代码里的“_tvSecret”的生命周期需要和tableView的生命周期相同。这里创建的全局变量,防止tableView刷新时它的dataSource和delegate已经不存在,从而导致页面异常,具体的详情不做更多解读，欢迎去GitHub获取代码一探究竟 [https://github.com/cba023/CBTableViewSecret](https://github.com/cba023/CBTableViewSecret)。
+需要注意的是，代码里的“_tvSecret”的生命周期需要和tableView的生命周期相同。这里创建的全局变量,防止tableView刷新时它的dataSource和delegate已经不存在,从而导致页面异常,具体的详情不做更多解读，欢迎去GitHub获取代码一探究竟，OC版本： [https://github.com/cba023/CBTableViewSecret](https://github.com/cba023/CBTableViewSecret) , Swift版本： [https://github.com/cba023/CBTableViewSecretSwifty](https://github.com/cba023/CBTableViewSecretSwifty)  。
 
 ### 总结
 虽然这是一个良好的开始，但是我仍然意识到项目中还有很多的不足，比如针对UITableViewDelegate和UITableViewDataSource的方法调用还不够彻底，这个估计后期我会慢慢优化，期待CBTableViewSecret能够更加完善；同时代码中可能还有值得改善的地方，希望正在阅读此文的你能提出宝贵意见。
